@@ -7,7 +7,13 @@ date-released: 2026-07-19
 authors:
   - name: "Meteorite Atlas contributors"
 license: MIT
+repository-code: "https://github.com/SeanWong17/meteorite-atlas"
+url: "https://seanwong17.github.io/meteorite-atlas/"
 keywords:
   - meteorites
+  - pallasites
+  - meteoritics
+  - interactive globe
   - science education
   - data visualization
+  - open data

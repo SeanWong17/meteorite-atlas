@@ -1,21 +1,22 @@
-# 资料与命名说明
+# Research and Naming Notes
 
-## 主数据源
+**English** | [简体中文](research-notes.zh-CN.md)
 
-本批记录以 [Meteoritical Bulletin Database](https://www.lpi.usra.edu/meteor/metbull.php) 为主。每个数据项的 `sources` 都包含对应条目链接，便于后续复核和更新。
+[Live atlas](https://seanwong17.github.io/meteorite-atlas/) · [Documentation index](README.md)
 
-## 容易混淆的名称
+## Primary Data Source
 
-- “随城橄榄陨石”在中文收藏语境中通常指俄罗斯的 `Seymchan`。本数据以 MBDB 正式名 `Seymchan` 和中文译名“谢姆昌”为准，并保留“随城”作为检索别名，不把它标到湖北随州。
-- 纳米比亚最常见的强关联条目是霍巴（Hoba）与基贝恩（Gibeon）。它们都是铁陨石，不是橄榄陨铁。网页会把常见俗称与正式分类分开显示。
-- “江爱藏布”对应 MBDB 正式名 `Gyarub Zangbo`，发现于西藏羌塘高原，现分类为未分组橄榄陨铁。其 2026 年分类修订应优先于早期的简化标签。
+The [Meteoritical Bulletin Database](https://www.lpi.usra.edu/meteor/metbull.php) is the primary reference for this collection. Every record includes its matching entry so names, classification, coordinates, and revisions can be checked.
 
-## 图片准入规则
+## Easily Confused Names
 
-MBDB 中的用户上传照片可能附有“可靠性未知”提示，不能自动作为网站素材。项目优先使用：
+- The Chinese collection term “Suizhou pallasite” often refers to Russia's `Seymchan`. This dataset uses the official MBDB name and retains the colloquial term only as a search alias; it is not mapped to Suizhou, Hubei.
+- Namibia's strongly associated Hoba and Gibeon records are iron meteorites, not pallasites. Common labels and official classification remain separate.
+- `Gyarub Zangbo` is an ungrouped pallasite from the Qiangtang Plateau. Its 2026 MBDB revision takes priority over earlier simplified labels.
+- Kenya's `Sericho` became scientifically recognized in 2016, although local herders had known the masses for decades. The MBDB reports over 2.8 tonnes and a strewn field longer than 45 km. Because endpoints and width are not supplied, the atlas maps the official reference point rather than an inferred boundary.
 
-1. Wikimedia Commons 中有明确许可和作者署名的图片。
-2. 博物馆、大学或研究机构开放馆藏页中的图片。
-3. 经过单独授权并记录版权人的图片。
+## Image Admission
 
-每张入库图片必须在前端保留作者、许可和原始页面链接，并经过主题核验。自动检索结果只作为候选；同名人物、地点和无关文献即使许可正确也不能入库。
+User-uploaded MBDB photographs may carry an unknown-reliability warning and are not published automatically. Preferred sources are licensed Wikimedia Commons files, open institutional collection pages, or separately licensed images. Every published file retains author, license, original page, and a manual subject review.
+
+The Sericho image is a licensed Commons photograph of a labeled specimen at the Tianjin Natural History Museum; the visible label independently supports the displayed subject, class, locality, and year.

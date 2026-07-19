@@ -1,81 +1,88 @@
-# Meteorite Atlas / 陨石图谱
+# Meteorite Atlas
 
-面向初级爱好者的开源陨石学习图谱。项目用可交互地球仪串联铁陨石与橄榄陨铁的分类、发现或坠落记录、空间证据和标本外观。
+**English** | [简体中文](README.zh-CN.md)
 
-![陨石图谱桌面界面](docs/screenshot.png)
+[Open the live atlas](https://seanwong17.github.io/meteorite-atlas/) · [Documentation](docs/README.md) · [Contributing](CONTRIBUTING.md)
 
-## 项目定位
+A beginner-friendly, open-source learning atlas that connects iron meteorites and pallasites through an interactive globe, scientific classification, find or fall records, spatial evidence, and verified specimen images.
 
-这是一份精选学习图谱，不是全球陨石完整数据库。当前收录 26 个正式命名记录，重点回答三个入门问题：
+![Meteorite Atlas desktop interface](docs/screenshot-en.png)
 
-- 铁陨石与橄榄陨铁在结构上有什么不同？
-- “目击坠落”和“后来发现”为什么不能混为一谈？
-- 地图上的点、虚线和范围分别代表什么证据？
+## Scope
 
-橄榄陨铁是石铁陨石的一类，不等同于全部石铁陨石。正式名称、分类和参考坐标优先采用 Meteoritical Bulletin Database（MBDB）。
+This is a curated learning collection, not a complete global meteorite database. The current 27 official records focus on three introductory questions:
 
-## 功能
+- How do iron meteorites and pallasites differ in structure?
+- Why are an observed fall and a later find not the same kind of record?
+- What evidence do a point, dashed line, or shaded extent represent on a map?
 
-- Three.js 可旋转地球仪、国家边界、分类标记和散布范围图层
-- 名称、别名、地区、分类、年份和科普术语全文搜索
-- 类别、记录方式筛选以及名称、年份排序
-- 中文分类解释、坐标角色、证据等级和“看图时留意”提示
-- 三条新手学习路线、术语表和双记录对比
-- 可分享的陨石与筛选 URL，支持浏览器前进后退
-- 桌面双侧工作区，移动端地图、目录、详情单面板导航
-- 经过主题与许可证核验的本地图片缓存和逐项署名
-- JSON Schema、跨文件数据校验和 Playwright 端到端测试
+A pallasite is one type of stony-iron meteorite, not a synonym for every stony-iron meteorite. Official names, classifications, and reference coordinates prioritize the Meteoritical Bulletin Database (MBDB).
 
-## 本地运行
+## Features
 
-需要 Node.js 18 或更高版本。
+- Three.js globe with country boundaries, classification markers, and evidence-based strewn-field layers
+- Chinese and English interface, editorial content, search vocabulary, and shareable `lang` URL state
+- Search across names, aliases, regions, classifications, years, and educational terms
+- Category and record-type filters with name and date sorting
+- Beginner learning paths, glossary, observation prompts, and side-by-side comparison
+- Shareable meteorite and filter URLs with browser back/forward support
+- Desktop workspace plus exclusive map, catalog, and detail views on mobile
+- Locally cached specimen images with manual subject review and item-level attribution
+- JSON Schema, cross-file bilingual validation, CI, and Playwright end-to-end tests
+
+The globe is stationary by default. It remains centered while users orbit in any geographic direction; selecting a record changes the viewing direction without shifting the control target. Auto-rotation is optional and stops on manual input.
+
+## Run Locally
+
+Node.js 18 or later is required.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Vite 会输出本地访问地址。常用命令：
+Useful commands:
 
 ```bash
-npm run validate:data  # 校验数据、几何、来源和图片清单
-npm run build          # 生成生产版本
-npm run test:e2e       # 自动启动开发服务器并运行浏览器测试
-npm run check          # 执行完整检查
-npm run fetch:images   # 生成待人工审核的 Commons 候选
-npm run cache:images   # 缓存已经批准的图片并更新署名文档
+npm run validate:data  # Validate data, translations, geometry, sources, and image records
+npm run build          # Build the production site
+npm run test:e2e       # Start the test server and run browser tests
+npm run check          # Run the complete validation suite
+npm run fetch:images   # Create Commons candidates that still require manual review
+npm run cache:images   # Cache approved images and regenerate attribution documents
 ```
 
-## 数据与目录
+## Repository Layout
 
 ```text
-data/                         主数据、图片清单和 JSON Schema
-docs/                         研究、内容、空间和资源说明
-public/assets/                地球、边界和核验后的本地图片
-scripts/                      数据校验与图片策展工具
-src/App.jsx                   页面状态、目录、详情、导览与对比
-src/GlobeScene.jsx            Three.js 场景与空间表达
-tests/atlas.spec.js           关键用户流程和响应式测试
+data/                         Primary records, English content, image manifest, and JSON Schema
+docs/                         Bilingual research, content, spatial, and asset documentation
+public/assets/                Earth assets, boundaries, and reviewed local images
+scripts/                      Data validation and image-curation tools
+src/App.jsx                   UI state, catalog, details, guide, comparison, and i18n wiring
+src/GlobeScene.jsx            Three.js scene and spatial representation
+src/i18n.js                   Runtime interface and record localization
+tests/atlas.spec.js           Critical workflows, responsive behavior, and WebGL checks
 ```
 
-新增记录前请阅读 [数据贡献指南](docs/data-contribution.md)、[内容写作规范](docs/content-guide.md) 和 [空间表达规则](docs/spatial-model.md)。实现概览见 [架构说明](docs/architecture.md)。
+Before adding a record, read the [data contribution guide](docs/data-contribution.md), [content guide](docs/content-guide.md), and [spatial model](docs/spatial-model.md). See the [architecture overview](docs/architecture.md) for implementation boundaries.
 
-## 数据原则
+## Data Principles
 
-- “发现地”“坠落地点”“散布区”“撞击坑”和“展藏地点”分别记录。
-- 不用任意圆或行政中心伪装未知边界。
-- 自动图片搜索只产生 `needs-review` 候选，人工核验后才能设为 `approved`。
-- 页面摘要使用段落级来源编号；重要文化史或研究结论应补充专门来源。
-- 数据修改必须通过 `npm run validate:data`。
+- Find locations, fall locations, strewn fields, impact craters, and museum locations remain distinct.
+- Unknown boundaries are never replaced with arbitrary circles or administrative centers.
+- Automated image search only produces `needs-review` candidates; only manually approved images can be published.
+- Specific claims use paragraph-level references, with dedicated sources for history, mass, and spatial extents.
+- Every curated record must have a complete English content counterpart and pass `npm run validate:data`.
 
-## 参与贡献
+## Contributing
 
-欢迎补充来源、纠正中文表述、核验图片、改善无障碍或增加测试。提交前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。适合第一次参与的任务可以从带有 `good first issue` 标签的 Issue 开始。
+Contributions that improve sources, language, accessibility, image review, or tests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Beginner contributors can start with issues labeled `good first issue`.
 
-## 许可证
+## License
 
-代码采用 [MIT License](LICENSE)。项目原创科普文字与数据结构采用 CC BY 4.0；Wikimedia Commons 图片、NASA/Three.js 地球贴图和 Natural Earth 边界保持各自许可或公共领域状态。详见 [许可证与第三方资源](docs/licenses.md)。
+Code is released under the [MIT License](LICENSE). Original educational writing and data structure are available under CC BY 4.0. Wikimedia Commons images, Earth textures, and Natural Earth boundaries retain their individual terms; see [third-party licenses](docs/licenses.md).
 
-## 当前范围
+## Current Collection
 
-当前版本聚焦 13 个铁陨石与 13 个橄榄陨铁记录。后续扩展优先保证来源、空间证据和中文解释质量，不以记录数量为目标。
+The atlas currently includes 13 iron meteorites and 14 pallasites. The newest curated addition is Kenya's Sericho pallasite, documented with its official MBDB reference point and a reported strewn field longer than 45 km without inventing an unsupported boundary.

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T09:12:29.940Z",
+  "generatedAt": "2026-07-19T09:50:33.707Z",
   "images": [
     {
       "id": "aletai",
@@ -224,6 +224,22 @@
       "reviewedAt": "2026-07-19",
       "reviewedBy": "project-curation",
       "localPath": "assets/meteorites/fukang.jpg"
+    },
+    {
+      "id": "sericho",
+      "title": "Sericho切片.jpg",
+      "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Sericho%E5%88%87%E7%89%87.jpg/1280px-Sericho%E5%88%87%E7%89%87.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Sericho%E5%88%87%E7%89%87.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Sericho%E5%88%87%E7%89%87.jpg",
+      "author": "Leiem",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "credit": "Own work; specimen displayed by the Tianjin Natural History Museum",
+      "retrievedAt": "2026-07-19",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-07-19",
+      "reviewedBy": "project-curation",
+      "localPath": "assets/meteorites/sericho.jpg"
     },
     {
       "id": "imilac",

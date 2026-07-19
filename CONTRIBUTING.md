@@ -1,38 +1,41 @@
-# 贡献指南
+# Contributing
 
-感谢你帮助改进 Meteorite Atlas。项目面向初级爱好者，因此准确、可解释和可复核比记录数量更重要。
+**English** | [简体中文](CONTRIBUTING.zh-CN.md)
 
-## 开始之前
+[Live atlas](https://seanwong17.github.io/meteorite-atlas/) · [Documentation](docs/README.md)
 
-1. 搜索现有 Issue，确认问题尚未被处理。
-2. 数据贡献先阅读 `docs/data-contribution.md`，科普文字先阅读 `docs/content-guide.md`。
-3. 较大的界面或数据模型变更请先创建 Issue，说明用户问题、建议方案和来源。
+Thank you for improving Meteorite Atlas. The project serves beginner enthusiasts, so accuracy, explanation, and reproducibility matter more than record count.
 
-## 开发流程
+## Before You Start
+
+1. Search existing issues to confirm the work is not already underway.
+2. Read the [data contribution guide](docs/data-contribution.md) for records and the [content guide](docs/content-guide.md) for educational writing.
+3. Open an issue before a large UI or data-model change and describe the user problem, proposal, and supporting sources.
+
+## Development
 
 ```bash
 npm ci
 npm run dev
 ```
 
-修改完成后运行：
+Run the full suite before submitting:
 
 ```bash
 npm run check
 ```
 
-提交应保持范围清晰。不要在同一个 Pull Request 中同时进行无关重构、批量数据扩展和视觉改版。
+Keep each pull request focused. Do not combine unrelated refactoring, bulk data expansion, and visual redesign.
 
-## 数据贡献要求
+## Data Requirements
 
-- 正式名称、分类和参考坐标优先引用 MBDB。
-- 文化史、质量、散布范围或展藏信息应提供对应来源。
-- 不根据新闻插图或商品页面判断陨石身份。
-- 图片必须有作者、许可、原始文件页和人工主题审核记录。
-- 不确定内容可以提交为研究笔记，不能包装成确定事实。
+- Use the MBDB first for official names, classification, events, and reference coordinates.
+- Cite the corresponding source for cultural history, mass, distribution, or collection claims.
+- Add a complete English counterpart in `data/meteorites.en.json` for every primary record.
+- Do not identify meteorites from news illustrations or sales pages.
+- Images require author, license, original file page, and a manual subject review.
+- Uncertain material can remain in research notes but must not be presented as settled fact.
 
-## Pull Request
+## Pull Requests
 
-请说明：改了什么、为什么改、如何验证，以及数据或图片来源。界面变化请附桌面和移动端截图。维护者可能要求拆分过大的提交或补充来源。
-
-参与本项目即表示你同意遵守 `CODE_OF_CONDUCT.md`。
+Explain what changed, why it changed, how it was verified, and the sources for data or images. Include desktop and mobile screenshots for visible changes. By participating, you agree to follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).

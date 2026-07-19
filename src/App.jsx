@@ -16,6 +16,7 @@ import {
   Globe2,
   ImageOff,
   Layers3,
+  Languages,
   List,
   LocateFixed,
   Map as MapIcon,
@@ -28,28 +29,29 @@ import {
 import meteoriteData from "../data/meteorites.json";
 import wikimediaData from "../data/wikimedia-images.json";
 import {
-  categoryOptions,
-  classificationZh,
+  VALID_CATEGORY_IDS,
+  VALID_EVENT_IDS,
+  classificationLabel,
+  contentFor,
   coverageLabel,
-  eventOptions,
   evidenceLabel,
-  glossary,
-  learningPaths,
   observationNote,
   queryText,
-  sortOptions,
 } from "./content";
+import {
+  getInitialLocale,
+  localizeMeteorite,
+  LOCALES,
+  uiFor,
+} from "./i18n";
 
 const GlobeScene = lazy(() => import("./GlobeScene"));
-const meteorites = meteoriteData.meteorites;
-const meteoriteById = new Map(meteorites.map((meteorite) => [meteorite.id, meteorite]));
+const rawMeteorites = meteoriteData.meteorites;
+const rawMeteoriteById = new Map(rawMeteorites.map((meteorite) => [meteorite.id, meteorite]));
 const approvedImages = wikimediaData.images.filter(
   (image) => image.reviewStatus === "approved",
 );
 const imageById = new Map(approvedImages.map((image) => [image.id, image]));
-const validCategories = new Set(categoryOptions.map((option) => option.id));
-const validEvents = new Set(eventOptions.map((option) => option.id));
-
 const getUrlState = () => {
   const params = new URLSearchParams(window.location.search);
   const selectedId = params.get("meteorite");
@@ -57,10 +59,11 @@ const getUrlState = () => {
   const eventKind = params.get("event");
 
   return {
-    selectedId: meteoriteById.has(selectedId) ? selectedId : "fukang",
-    category: validCategories.has(category) ? category : "all",
-    eventKind: validEvents.has(eventKind) ? eventKind : "all",
+    selectedId: rawMeteoriteById.has(selectedId) ? selectedId : "fukang",
+    category: VALID_CATEGORY_IDS.has(category) ? category : "all",
+    eventKind: VALID_EVENT_IDS.has(eventKind) ? eventKind : "all",
     query: params.get("q") ?? "",
+    locale: getInitialLocale(),
   };
 };
 
@@ -103,7 +106,7 @@ const useDialogFocus = () => {
   return dialogRef;
 };
 
-function MeteoriteImage({ meteorite, compact = false }) {
+function MeteoriteImage({ meteorite, t, compact = false }) {
   const image = imageById.get(meteorite.id);
   const [failed, setFailed] = useState(false);
 
@@ -113,7 +116,7 @@ function MeteoriteImage({ meteorite, compact = false }) {
     return (
       <div className={`image-placeholder ${meteorite.category} ${compact ? "compact" : ""}`}>
         <ImageOff size={25} strokeWidth={1.5} />
-        <span>{failed ? "图像加载失败" : "经核验图像待补"}</span>
+        <span>{failed ? t.imageLoadFailed : t.imagePending}</span>
       </div>
     );
   }
@@ -122,7 +125,7 @@ function MeteoriteImage({ meteorite, compact = false }) {
     <figure className={`meteorite-image ${compact ? "compact" : ""}`}>
       <img
         src={`${import.meta.env.BASE_URL}${image.localPath.replace(/^\//, "")}`}
-        alt={`${meteorite.name.zh}陨石标本`}
+        alt={t.imageAlt(meteorite.displayName)}
         loading="eager"
         decoding="async"
         onError={() => setFailed(true)}
@@ -139,7 +142,7 @@ function MeteoriteImage({ meteorite, compact = false }) {
   );
 }
 
-function DetailPanel({ meteorite, onFocus, onCompare, onShare, shareStatus }) {
+function DetailPanel({ meteorite, locale, t, onFocus, onCompare, onShare, shareStatus }) {
   const image = imageById.get(meteorite.id);
   const coverage = meteorite.map.coverage;
 
@@ -149,29 +152,29 @@ function DetailPanel({ meteorite, onFocus, onCompare, onShare, shareStatus }) {
         <div>
           <p className="eyebrow">
             {meteorite.category === "pallasite"
-              ? "橄榄陨铁 · 石铁陨石的一类"
-              : meteorite.categoryZh}
+              ? t.pallasiteLong
+              : t.ironMeteorite}
           </p>
-          <h2 id="detail-title">{meteorite.name.zh}</h2>
-          <p className="english-name">{meteorite.name.en}</p>
+          <h2 id="detail-title">{meteorite.displayName}</h2>
+          <p className="english-name">{meteorite.secondaryName}</p>
         </div>
         <div className="detail-actions">
-          <button className="icon-button" type="button" onClick={onShare} aria-label="分享当前陨石" data-tooltip="分享">
+          <button className="icon-button" type="button" onClick={onShare} aria-label={t.shareCurrent} data-tooltip={t.share}>
             {shareStatus ? <Check size={18} /> : <Share2 size={18} />}
           </button>
-          <button className="icon-button" type="button" onClick={onFocus} aria-label={`定位 ${meteorite.name.zh}`} data-tooltip="定位到地图">
+          <button className="icon-button" type="button" onClick={onFocus} aria-label={t.locate(meteorite.displayName)} data-tooltip={t.locateMap}>
             <LocateFixed size={18} />
           </button>
         </div>
       </div>
 
-      <MeteoriteImage meteorite={meteorite} />
+      <MeteoriteImage meteorite={meteorite} t={t} />
 
       <p className="detail-summary">
-        {meteorite.summaryZh}
-        <span className="inline-citations" aria-label="本段来源">
+        {meteorite.displaySummary}
+        <span className="inline-citations" aria-label={t.paragraphSources}>
           {meteorite.sources.map((source, index) => (
-            <a key={source.url} href={source.url} target="_blank" rel="noreferrer" aria-label={`来源 ${index + 1}`}>
+            <a key={source.url} href={source.url} target="_blank" rel="noreferrer" aria-label={t.source(index + 1)}>
               [{index + 1}]
             </a>
           ))}
@@ -180,70 +183,70 @@ function DetailPanel({ meteorite, onFocus, onCompare, onShare, shareStatus }) {
 
       <dl className="facts-grid">
         <div className="fact-wide">
-          <dt>科学分类</dt>
+          <dt>{t.scientificClass}</dt>
           <dd>
-            <strong>{classificationZh(meteorite.classification)}</strong>
-            <small>{meteorite.classification}</small>
+            <strong>{classificationLabel(meteorite.classification, locale)}</strong>
+            {locale !== "en" && <small>{meteorite.classification}</small>}
           </dd>
         </div>
         <div>
-          <dt>记录方式</dt>
-          <dd>{meteorite.event.kind === "observed_fall" ? "目击坠落" : "后来发现"}</dd>
+          <dt>{t.eventType}</dt>
+          <dd>{meteorite.event.kind === "observed_fall" ? t.observedFall : t.laterFind}</dd>
         </div>
         <div>
-          <dt>时间记录</dt>
-          <dd>{meteorite.event.labelZh}</dd>
+          <dt>{t.eventTime}</dt>
+          <dd>{meteorite.displayEventLabel}</dd>
         </div>
         <div>
-          <dt>地点</dt>
-          <dd>{meteorite.location.regionZh}</dd>
+          <dt>{t.location}</dt>
+          <dd>{meteorite.displayRegion}</dd>
         </div>
         <div>
-          <dt>坐标角色</dt>
-          <dd>{meteorite.location.coordinateRole}</dd>
+          <dt>{t.coordinateRole}</dt>
+          <dd>{meteorite.displayCoordinateRole}</dd>
         </div>
         <div>
-          <dt>参考坐标</dt>
+          <dt>{t.referenceCoordinates}</dt>
           <dd>{coordinateText(meteorite.location.coordinates)}</dd>
         </div>
         <div>
-          <dt>地图证据</dt>
-          <dd>{evidenceLabel(coverage.confidence)}</dd>
+          <dt>{t.mapEvidence}</dt>
+          <dd>{evidenceLabel(coverage.confidence, locale)}</dd>
         </div>
       </dl>
 
       <section className="observation-note" aria-labelledby="observation-title">
         <Sparkles size={16} />
         <div>
-          <h3 id="observation-title">看图时留意</h3>
-          <p>{observationNote(meteorite)}</p>
+          <h3 id="observation-title">{t.observationTitle}</h3>
+          <p>{observationNote(meteorite, locale)}</p>
         </div>
       </section>
 
       <section className="coverage-note" aria-labelledby="coverage-title">
         <Layers3 size={16} />
         <div>
-          <h3 id="coverage-title">{coverageLabel(coverage)}</h3>
-          <p>{coverage.descriptionZh}</p>
+          <h3 id="coverage-title">{coverageLabel(coverage, locale)}</h3>
+          <p>{meteorite.displayCoverageDescription}</p>
         </div>
       </section>
 
       <button className="compare-button" type="button" onClick={() => onCompare(meteorite)}>
         <Columns2 size={16} />
-        与另一颗陨石对比
+        {t.compareAnother}
       </button>
 
       {image && (
         <p className="image-credit">
-          图片：{image.author}，
+          {t.imageCredit}: {image.author},{" "}
           {image.licenseUrl ? (
             <a href={image.licenseUrl} target="_blank" rel="noreferrer">{image.license}</a>
           ) : image.license}
-          <span> · 已人工核验主题</span>
+          <span> · {t.imageReviewed}</span>
         </p>
       )}
 
-      <div className="source-list" aria-label="资料来源">
+      <div className="source-list" aria-label={t.sources}>
         {meteorite.sources.map((source, index) => (
           <a key={source.url} href={source.url} target="_blank" rel="noreferrer">
             <span className="source-index">{index + 1}</span>
@@ -252,24 +255,24 @@ function DetailPanel({ meteorite, onFocus, onCompare, onShare, shareStatus }) {
           </a>
         ))}
       </div>
-      <p className="record-provenance">数据集更新于 {meteoriteData.updatedAt} · 正式名称与坐标优先采用 MBDB</p>
+      <p className="record-provenance">{t.provenance(meteoriteData.updatedAt)}</p>
     </aside>
   );
 }
 
-function LearningPanel({ onClose, onStartPath }) {
+function LearningPanel({ t, learningPaths, glossary, onClose, onStartPath }) {
   const dialogRef = useDialogFocus();
   return (
     <div className="dialog-backdrop" role="presentation" onMouseDown={onClose}>
       <section ref={dialogRef} tabIndex={-1} className="learning-dialog" role="dialog" aria-modal="true" aria-labelledby="learning-title" onMouseDown={(event) => event.stopPropagation()}>
         <header className="dialog-header">
           <div>
-            <p className="eyebrow">BEGINNER GUIDE</p>
-            <h2 id="learning-title">从三个问题开始</h2>
+            <p className="eyebrow">{t.guideEyebrow}</p>
+            <h2 id="learning-title">{t.guideTitle}</h2>
           </div>
-          <button className="icon-button" type="button" onClick={onClose} aria-label="关闭新手导览"><X size={19} /></button>
+          <button className="icon-button" type="button" onClick={onClose} aria-label={t.closeGuide}><X size={19} /></button>
         </header>
-        <p className="dialog-intro">这是一份精选学习图谱，不是完整陨石数据库。先建立分类、记录方式和地图证据三个概念，再浏览具体名称。</p>
+        <p className="dialog-intro">{t.guideIntro}</p>
         <div className="learning-paths">
           {learningPaths.map((path, index) => (
             <button key={path.id} type="button" className="learning-path" onClick={() => onStartPath(path)}>
@@ -284,7 +287,7 @@ function LearningPanel({ onClose, onStartPath }) {
           ))}
         </div>
         <section className="glossary-section" aria-labelledby="glossary-title">
-          <h3 id="glossary-title">常用术语</h3>
+          <h3 id="glossary-title">{t.glossary}</h3>
           <dl className="glossary-grid">
             {glossary.map((entry) => (
               <div key={entry.term}>
@@ -299,32 +302,32 @@ function LearningPanel({ onClose, onStartPath }) {
   );
 }
 
-function ComparePanel({ records, onClose, onSelect }) {
+function ComparePanel({ records, locale, t, onClose, onSelect }) {
   const dialogRef = useDialogFocus();
   return (
     <div className="dialog-backdrop" role="presentation" onMouseDown={onClose}>
       <section ref={dialogRef} tabIndex={-1} className="compare-dialog" role="dialog" aria-modal="true" aria-labelledby="compare-title" onMouseDown={(event) => event.stopPropagation()}>
         <header className="dialog-header">
           <div>
-            <p className="eyebrow">COMPARE</p>
-            <h2 id="compare-title">并排看差异</h2>
+            <p className="eyebrow">{t.compareEyebrow}</p>
+            <h2 id="compare-title">{t.compareTitle}</h2>
           </div>
-          <button className="icon-button" type="button" onClick={onClose} aria-label="关闭对比"><X size={19} /></button>
+          <button className="icon-button" type="button" onClick={onClose} aria-label={t.closeCompare}><X size={19} /></button>
         </header>
         <div className="compare-grid">
           {records.map((meteorite) => (
             <article key={meteorite.id} className={`compare-record ${meteorite.category}`}>
-              <MeteoriteImage meteorite={meteorite} compact />
-              <p className="eyebrow">{meteorite.category === "pallasite" ? "橄榄陨铁" : "铁陨石"}</p>
-              <h3>{meteorite.name.zh}</h3>
-              <p className="english-name">{meteorite.name.en}</p>
+              <MeteoriteImage meteorite={meteorite} t={t} compact />
+              <p className="eyebrow">{meteorite.category === "pallasite" ? t.pallasite : t.ironMeteorite}</p>
+              <h3>{meteorite.displayName}</h3>
+              <p className="english-name">{meteorite.secondaryName}</p>
               <dl>
-                <div><dt>分类</dt><dd>{classificationZh(meteorite.classification)}</dd></div>
-                <div><dt>记录</dt><dd>{meteorite.event.kind === "observed_fall" ? "目击坠落" : "后来发现"}</dd></div>
-                <div><dt>地图</dt><dd>{evidenceLabel(meteorite.map.coverage.confidence)}</dd></div>
+                <div><dt>{t.classification}</dt><dd>{classificationLabel(meteorite.classification, locale)}</dd></div>
+                <div><dt>{t.record}</dt><dd>{meteorite.event.kind === "observed_fall" ? t.observedFall : t.laterFind}</dd></div>
+                <div><dt>{t.map}</dt><dd>{evidenceLabel(meteorite.map.coverage.confidence, locale)}</dd></div>
               </dl>
-              <p>{meteorite.summaryZh}</p>
-              <button type="button" onClick={() => onSelect(meteorite)}>在图谱中查看 <ChevronRight size={15} /></button>
+              <p>{meteorite.displaySummary}</p>
+              <button type="button" onClick={() => onSelect(meteorite)}>{t.viewInAtlas} <ChevronRight size={15} /></button>
             </article>
           ))}
         </div>
@@ -336,20 +339,29 @@ function ComparePanel({ records, onClose, onSelect }) {
 function App() {
   const initialUrlState = useRef(getUrlState()).current;
   const globeRef = useRef(null);
+  const [locale, setLocale] = useState(initialUrlState.locale);
   const [category, setCategory] = useState(initialUrlState.category);
   const [eventKind, setEventKind] = useState(initialUrlState.eventKind);
   const [query, setQuery] = useState(initialUrlState.query);
   const [sort, setSort] = useState("curated");
   const [showCoverage, setShowCoverage] = useState(false);
-  const [autoRotate, setAutoRotate] = useState(
-    () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
+  const [autoRotate, setAutoRotate] = useState(false);
   const [selectedId, setSelectedId] = useState(initialUrlState.selectedId);
   const [mobilePanel, setMobilePanel] = useState("map");
   const [guideOpen, setGuideOpen] = useState(false);
   const [compareIds, setCompareIds] = useState([]);
   const [compareOpen, setCompareOpen] = useState(false);
   const [shareStatus, setShareStatus] = useState(false);
+  const t = uiFor(locale);
+  const { categoryOptions, eventOptions, sortOptions, learningPaths, glossary } = contentFor(locale);
+  const meteorites = useMemo(
+    () => rawMeteorites.map((meteorite) => localizeMeteorite(meteorite, locale)),
+    [locale],
+  );
+  const meteoriteById = useMemo(
+    () => new Map(meteorites.map((meteorite) => [meteorite.id, meteorite])),
+    [meteorites],
+  );
 
   const filteredMeteorites = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
@@ -362,9 +374,12 @@ function App() {
 
     if (sort === "year-desc") return records.sort((a, b) => (b.event.year ?? -Infinity) - (a.event.year ?? -Infinity));
     if (sort === "year-asc") return records.sort((a, b) => (a.event.year ?? Infinity) - (b.event.year ?? Infinity));
-    if (sort === "name") return records.sort((a, b) => a.name.zh.localeCompare(b.name.zh, "zh-CN"));
+    if (sort === "name") {
+      return records.sort((a, b) =>
+        a.displayName.localeCompare(b.displayName, locale === "en" ? "en" : "zh-CN"));
+    }
     return records;
-  }, [category, eventKind, query, sort]);
+  }, [category, eventKind, locale, meteorites, query, sort]);
 
   const visibleIds = useMemo(
     () => new Set(filteredMeteorites.map((meteorite) => meteorite.id)),
@@ -382,7 +397,14 @@ function App() {
 
   useEffect(() => {
     globeRef.current?.focusOn(selectedMeteorite);
-  }, [selectedMeteorite]);
+  }, [selectedId]);
+
+  useEffect(() => {
+    document.documentElement.lang = LOCALES[locale];
+    document.title = t.pageTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", t.pageDescription);
+    window.localStorage.setItem("meteorite-atlas-locale", locale);
+  }, [locale, t.pageDescription, t.pageTitle]);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -390,9 +412,10 @@ function App() {
     if (category !== "all") params.set("category", category);
     if (eventKind !== "all") params.set("event", eventKind);
     if (query) params.set("q", query);
+    if (locale === "en") params.set("lang", "en");
     const nextUrl = `${window.location.pathname}?${params.toString()}`;
     window.history.replaceState(null, "", nextUrl);
-  }, [category, eventKind, query, selectedId]);
+  }, [category, eventKind, locale, query, selectedId]);
 
   useEffect(() => {
     const restoreUrlState = () => {
@@ -401,6 +424,7 @@ function App() {
       setEventKind(nextState.eventKind);
       setQuery(nextState.query);
       setSelectedId(nextState.selectedId);
+      setLocale(nextState.locale);
     };
     window.addEventListener("popstate", restoreUrlState);
     return () => window.removeEventListener("popstate", restoreUrlState);
@@ -430,6 +454,10 @@ function App() {
   const focusSelected = () => {
     setAutoRotate(false);
     globeRef.current?.focusOn(selectedMeteorite);
+  };
+
+  const toggleLocale = () => {
+    setLocale((current) => current === "zh" ? "en" : "zh");
   };
 
   const resetFilters = () => {
@@ -467,17 +495,19 @@ function App() {
   };
 
   return (
-    <main className="app-shell" data-mobile-panel={mobilePanel}>
+    <main className="app-shell" data-mobile-panel={mobilePanel} data-locale={locale}>
       <div className="globe-stage">
-        <Suspense fallback={<div className="globe-loading"><Globe2 size={28} /><span>正在加载地球仪</span></div>}>
+        <Suspense fallback={<div className="globe-loading"><Globe2 size={28} /><span>{t.globeLoading}</span></div>}>
           <GlobeScene
             ref={globeRef}
-            meteorites={meteorites}
+            meteorites={rawMeteorites}
             visibleIds={visibleIds}
             selectedId={selectedMeteorite.id}
             showCoverage={showCoverage}
             autoRotate={autoRotate}
+            locale={locale}
             onSelect={selectMeteorite}
+            onInteraction={() => setAutoRotate(false)}
           />
         </Suspense>
       </div>
@@ -487,39 +517,43 @@ function App() {
           <Globe2 size={22} strokeWidth={1.6} />
           <span>
             <small>METEORITE ATLAS</small>
-            <h1>陨石图谱</h1>
+            <h1>{t.brandName}</h1>
           </span>
         </div>
 
         <div className="topbar-actions">
           <button className="guide-button" type="button" onClick={() => setGuideOpen(true)}>
             <BookOpen size={17} />
-            <span>新手导览</span>
+            <span>{t.guide}</span>
           </button>
           <label className="toggle-control">
-            <span>散布区</span>
+            <span>{t.coverageToggle}</span>
             <input type="checkbox" checked={showCoverage} onChange={(event) => setShowCoverage(event.target.checked)} />
             <span className="toggle-track" aria-hidden="true" />
           </label>
-          <button className={`icon-button ${autoRotate ? "active" : ""}`} type="button" onClick={() => setAutoRotate((current) => !current)} aria-label="切换地球自动旋转" aria-pressed={autoRotate} data-tooltip="自动旋转">
+          <button className={`icon-button ${autoRotate ? "active" : ""}`} type="button" onClick={() => setAutoRotate((current) => !current)} aria-label={t.autoRotateLabel} aria-pressed={autoRotate} data-tooltip={t.autoRotate}>
             <RotateCcw size={18} />
           </button>
-          <button className="icon-button" type="button" onClick={() => globeRef.current?.resetView()} aria-label="重置地图视角" data-tooltip="重置视角">
+          <button className="icon-button" type="button" onClick={() => globeRef.current?.resetView()} aria-label={t.resetView} data-tooltip={t.resetView}>
             <LocateFixed size={18} />
+          </button>
+          <button className="language-button" type="button" onClick={toggleLocale} aria-label={t.languageSwitch} data-tooltip={t.languageSwitch}>
+            <Languages size={16} />
+            <span>{t.languageShort}</span>
           </button>
         </div>
       </header>
 
-      <section className="catalog-panel" aria-label="陨石目录">
+      <section className="catalog-panel" aria-label={t.catalogLabel}>
         <div className="catalog-heading">
           <div>
-            <p className="eyebrow">CURATED COLLECTION</p>
-            <h2>全球精选记录</h2>
+            <p className="eyebrow">{t.curatedCollection}</p>
+            <h2>{t.collectionTitle}</h2>
           </div>
           <span>{filteredMeteorites.length} / {meteorites.length}</span>
         </div>
 
-        <div className="segmented-control" aria-label="陨石类别筛选">
+        <div className="segmented-control" aria-label={t.categoryFilter}>
           {categoryOptions.map((option) => (
             <button key={option.id} type="button" className={category === option.id ? "active" : ""} onClick={() => setCategory(option.id)} aria-pressed={category === option.id}>
               {option.label}
@@ -529,29 +563,29 @@ function App() {
 
         <label className="search-field">
           <Search size={17} />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索名称、地区、术语或故事" aria-label="搜索陨石" />
-          {query && <button type="button" onClick={() => setQuery("")} aria-label="清除搜索"><X size={15} /></button>}
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t.searchPlaceholder} aria-label={t.searchLabel} />
+          {query && <button type="button" onClick={() => setQuery("")} aria-label={t.clearSearch}><X size={15} /></button>}
         </label>
 
         <div className="filter-row">
           <label>
-            <span>记录方式</span>
+            <span>{t.recordType}</span>
             <select value={eventKind} onChange={(event) => setEventKind(event.target.value)}>
               {eventOptions.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
             </select>
           </label>
           <label>
-            <span>排序</span>
+            <span>{t.sort}</span>
             <select value={sort} onChange={(event) => setSort(event.target.value)}>
               {sortOptions.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
             </select>
           </label>
         </div>
 
-        <div className="legend" aria-label="分类图例">
-          <span><i className="iron-dot" />铁陨石</span>
-          <span><i className="pallasite-dot" />橄榄陨铁</span>
-          {hasFilters && <button type="button" onClick={resetFilters}>重置筛选</button>}
+        <div className="legend" aria-label={t.legend}>
+          <span><i className="iron-dot" />{t.ironMeteorite}</span>
+          <span><i className="pallasite-dot" />{t.pallasite}</span>
+          {hasFilters && <button type="button" onClick={resetFilters}>{t.resetFilters}</button>}
         </div>
 
         <div className="record-list">
@@ -559,19 +593,19 @@ function App() {
             <button key={meteorite.id} className={`record-row ${meteorite.id === selectedMeteorite.id ? "selected" : ""}`} type="button" onClick={() => selectMeteorite(meteorite)} aria-pressed={meteorite.id === selectedMeteorite.id}>
               <i className={meteorite.category === "iron" ? "iron-dot" : "pallasite-dot"} />
               <span className="record-main">
-                <strong>{meteorite.name.zh}</strong>
-                <small>{meteorite.name.en}</small>
+                <strong>{meteorite.displayName}</strong>
+                <small>{meteorite.secondaryName}</small>
               </span>
               <span className="record-meta">
-                <small>{meteorite.event.kind === "observed_fall" ? "坠落" : "发现"}</small>
-                {meteorite.location.countryZh}
+                <small>{meteorite.event.kind === "observed_fall" ? t.fallShort : t.findShort}</small>
+                {meteorite.displayCountry}
               </span>
             </button>
           ))}
           {!filteredMeteorites.length && (
             <div className="empty-state">
-              <p>没有符合条件的记录</p>
-              <button type="button" onClick={resetFilters}>清除全部筛选</button>
+              <p>{t.noResults}</p>
+              <button type="button" onClick={resetFilters}>{t.clearAllFilters}</button>
             </div>
           )}
         </div>
@@ -579,29 +613,29 @@ function App() {
 
       <div className="scene-caption" aria-hidden="true">
         <Sparkles size={15} />
-        <span>{showCoverage ? "范围线表示证据，不等于精确边界" : "当前仅显示代表点"}</span>
+        <span>{showCoverage ? t.coverageCaption : t.pointCaption}</span>
       </div>
 
-      <DetailPanel meteorite={selectedMeteorite} onFocus={focusSelected} onCompare={addToCompare} onShare={shareSelected} shareStatus={shareStatus} />
+      <DetailPanel meteorite={selectedMeteorite} locale={locale} t={t} onFocus={focusSelected} onCompare={addToCompare} onShare={shareSelected} shareStatus={shareStatus} />
 
       {compareIds.length === 1 && (
         <button className="compare-tray" type="button" onClick={() => setMobilePanel("catalog")}>
           <Columns2 size={17} />
-          已选择 {meteoriteById.get(compareIds[0])?.name.zh}，再选一颗进行对比
+          {t.compareTray(meteoriteById.get(compareIds[0])?.displayName)}
           <ChevronRight size={16} />
         </button>
       )}
 
-      <nav className="mobile-nav" aria-label="移动端视图">
-        <button type="button" className={mobilePanel === "map" ? "active" : ""} onClick={() => setMobilePanel("map")} aria-pressed={mobilePanel === "map"}><MapIcon size={18} /><span>地图</span></button>
-        <button type="button" className={mobilePanel === "catalog" ? "active" : ""} onClick={() => setMobilePanel("catalog")} aria-pressed={mobilePanel === "catalog"}><List size={18} /><span>目录</span></button>
-        <button type="button" className={mobilePanel === "detail" ? "active" : ""} onClick={() => setMobilePanel("detail")} aria-pressed={mobilePanel === "detail"}><FileText size={18} /><span>详情</span></button>
+      <nav className="mobile-nav" aria-label={t.mobileNavigation}>
+        <button type="button" className={mobilePanel === "map" ? "active" : ""} onClick={() => setMobilePanel("map")} aria-pressed={mobilePanel === "map"}><MapIcon size={18} /><span>{t.map}</span></button>
+        <button type="button" className={mobilePanel === "catalog" ? "active" : ""} onClick={() => setMobilePanel("catalog")} aria-pressed={mobilePanel === "catalog"}><List size={18} /><span>{t.catalog}</span></button>
+        <button type="button" className={mobilePanel === "detail" ? "active" : ""} onClick={() => setMobilePanel("detail")} aria-pressed={mobilePanel === "detail"}><FileText size={18} /><span>{t.details}</span></button>
       </nav>
 
-      <p className="sr-only" aria-live="polite">已选择 {selectedMeteorite.name.zh}</p>
+      <p className="sr-only" aria-live="polite">{t.selectedAnnouncement(selectedMeteorite.displayName)}</p>
 
-      {guideOpen && <LearningPanel onClose={() => setGuideOpen(false)} onStartPath={startLearningPath} />}
-      {compareOpen && compareRecords.length === 2 && <ComparePanel records={compareRecords} onClose={() => setCompareOpen(false)} onSelect={(meteorite) => { setCompareOpen(false); selectMeteorite(meteorite); }} />}
+      {guideOpen && <LearningPanel t={t} learningPaths={learningPaths} glossary={glossary} onClose={() => setGuideOpen(false)} onStartPath={startLearningPath} />}
+      {compareOpen && compareRecords.length === 2 && <ComparePanel records={compareRecords} locale={locale} t={t} onClose={() => setCompareOpen(false)} onSelect={(meteorite) => { setCompareOpen(false); selectMeteorite(meteorite); }} />}
     </main>
   );
 }

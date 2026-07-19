@@ -5,6 +5,7 @@ import addFormats from "ajv-formats";
 const root = new URL("../", import.meta.url);
 const data = JSON.parse(readFileSync(new URL("data/meteorites.json", root), "utf8"));
 const schema = JSON.parse(readFileSync(new URL("data/meteorites.schema.json", root), "utf8"));
+const englishData = JSON.parse(readFileSync(new URL("data/meteorites.en.json", root), "utf8"));
 const imageManifest = JSON.parse(readFileSync(new URL("data/wikimedia-images.json", root), "utf8"));
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
@@ -42,6 +43,32 @@ for (const meteorite of data.meteorites) {
   ) {
     errors.push(`${prefix} a verified polygon requires at least three points`);
   }
+}
+
+const requiredEnglishFields = [
+  "eventLabel",
+  "country",
+  "region",
+  "coordinateRole",
+  "summary",
+  "coverageDescription",
+];
+if (englishData.locale !== "en") errors.push("[i18n] English dataset locale must be en");
+for (const meteorite of data.meteorites) {
+  const translation = englishData.meteorites?.[meteorite.id];
+  if (!translation) {
+    errors.push(`[i18n:${meteorite.id}] English translation is missing`);
+    continue;
+  }
+  for (const field of requiredEnglishFields) {
+    const minimumLength = field === "summary" ? 40 : 2;
+    if (typeof translation[field] !== "string" || translation[field].length < minimumLength) {
+      errors.push(`[i18n:${meteorite.id}] ${field} must be at least ${minimumLength} characters`);
+    }
+  }
+}
+for (const id of Object.keys(englishData.meteorites ?? {})) {
+  if (!ids.has(id)) errors.push(`[i18n:${id}] has no matching meteorite record`);
 }
 
 const imageIds = new Set();
@@ -93,4 +120,5 @@ console.log(JSON.stringify({
   events: countBy(data.meteorites, ({ event }) => event.kind),
   coverage: countBy(data.meteorites, ({ map }) => map.coverage.kind),
   approvedImages: imageManifest.images.filter((image) => image.reviewStatus === "approved").length,
+  englishTranslations: Object.keys(englishData.meteorites ?? {}).length,
 }, null, 2));

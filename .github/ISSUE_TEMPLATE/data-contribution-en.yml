@@ -1,0 +1,37 @@
+name: Data contribution (English)
+description: Add, correct, or expand a verifiable meteorite record
+title: "[Data]: "
+labels: [data]
+body:
+  - type: input
+    id: meteorite
+    attributes:
+      label: Official name
+      placeholder: For example, Sericho
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: Explain the current content, proposed content, and reason for the change.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Provide reproducible MBDB, paper, museum, or institutional links.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I distinguished find, fall, strewn-field, and museum locations.
+          required: true
+        - label: I can provide matching Chinese and English content or welcome translation help.
+          required: true
+        - label: Any image is not a sales page, namesake subject, or unreviewed search result.
+          required: true

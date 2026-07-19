@@ -1,33 +1,38 @@
-# 空间表达规则
+# Spatial Evidence Model
 
-地图不是所有记录都应该显示成同一种图钉。陨石数据库中的经纬度常代表发现点、散布区参考点或行政地点，并不等于天体穿过大气层时的精确落点。
+**English** | [简体中文](spatial-model.zh-CN.md)
 
-## 支持的形状
+[Live atlas](https://seanwong17.github.io/meteorite-atlas/) · [Documentation index](README.md)
 
-| `coverage.kind` | 适用情况 | 地图表达 |
+Not every meteorite belongs on the map as the same kind of pin. Database coordinates can represent a find, fall, strewn-field reference, or administrative locality rather than an exact atmospheric endpoint.
+
+## Supported Shapes
+
+| `coverage.kind` | Appropriate evidence | Map expression |
 | --- | --- | --- |
-| `point` | 只有一个可信地点，或单块原地保存 | 图钉 |
-| `circle` | 文献给出中心与半径 | 半透明圆 |
-| `ellipse` | 文献给出长短轴与方向 | 定向半透明椭圆 |
-| `polygon` | 有已发表或可复核的散布区边界 | 半透明多边形 |
-| `line` | 已知散布带主轴或连续发现线，但缺少可靠宽度 | 虚线轴线和范围提示 |
-| `multi-point` | 已公开多个发现点，但尚无边界 | 聚合标记或多个小点 |
+| `point` | One reliable locality or one mass preserved in place | Marker |
+| `circle` | Published center and radius | Translucent circle |
+| `ellipse` | Published major/minor axes and direction | Oriented translucent ellipse |
+| `polygon` | Published or reproducible strewn-field boundary | Translucent polygon |
+| `line` | Reproducible strewn axis without reliable width | Dashed axis |
+| `multi-point` | Several published find points without a boundary | Multiple markers |
 
-## 证据等级
+## Evidence Levels
 
-- `official-coordinate`：MBDB 或同等级资料直接给出的坐标。
-- `reported-extent`：资料明确给出长度、面积或范围，但不足以还原边界。
-- `verified-boundary`：已发布或可复核的边界，可直接渲染。
-- `editorial-approximation`：仅在后续确有必要时使用，必须在界面上写明为示意，不可与实测边界混淆。
-- `pending-digitization`：确认存在散布区，但还没有足够可靠的绘制数据。
+- `official-coordinate`: coordinate directly supplied by the MBDB or an equivalent source.
+- `reported-extent`: a source gives length, area, or extent but not enough detail to reconstruct the boundary.
+- `verified-boundary`: a published or reproducible boundary that can be rendered directly.
+- `editorial-approximation`: a necessary conversion, clearly labeled and never presented as measurement.
+- `pending-digitization`: a distribution is known but reliable geometry is not yet available.
 
-## 设计约束
+## Design Constraints
 
-1. 不以任意半径的圆替代未知散布区。圆看起来精确，反而容易传递错误信息。
-2. 只有中心和长度时，先用 `line`，不要臆造宽度、方向或椭圆轴。
-3. 点击区域时，详情页应说明它表示的是“发现区域”“陨石雨散布区”还是“撞击坑相关区域”。
-4. 地球仪默认显示代表点；用户缩放或开启“散布区”图层后再显示区域，避免首屏信息过载。
+1. Never replace an unknown distribution with an arbitrary circle.
+2. A reported length without endpoints, direction, or width remains textual evidence; it does not justify a line or ellipse.
+3. Record details must distinguish a find area, fall strewn field, impact-crater relation, and museum location.
+4. The globe shows representative points by default; users opt into extent layers to avoid first-view overload.
+5. The camera orbits a fixed globe center. Geographic direction remains stable and free roll is disabled.
 
-## 尺寸字段
+## Dimensions
 
-有区域资料的记录会补充 `dimensions`。其中 `majorAxisKm`、`minorAxisKm`、`radiusKm` 和 `areaKm2` 的值只有在资料直接给出或可公开复核的换算存在时才写入；`dimensionStatus` 标示其为 `reported`、`estimated` 或 `unknown`。`boundaryConfidence` 说明边界是否可直接被当作地图面，而不是把一个概括长度误画成精确地理范围。
+`majorAxisKm`, `minorAxisKm`, `radiusKm`, and `areaKm2` are included only when directly reported or reproducibly converted. `dimensionStatus` distinguishes `reported`, `estimated`, and `unknown`; `boundaryConfidence` prevents a summary length from being mistaken for a mapped boundary.

@@ -1,9 +1,11 @@
-# 社区行为准则
+# Code of Conduct
 
-我们希望这里是一个友善、严谨并适合不同经验水平参与的社区。
+**English** | [简体中文](CODE_OF_CONDUCT.zh-CN.md)
 
-参与者应尊重不同背景与知识水平，针对事实和实现讨论，不针对个人；在纠错时给出来源和可执行建议；尊重原住民知识、文化名称、图片作者和资料机构；不发表骚扰、歧视、威胁、侮辱或泄露隐私的内容。
+We want a welcoming, rigorous community where people at different experience levels can participate.
 
-项目维护者可以编辑或移除不符合本准则的 Issue、评论、提交或其他贡献，并在必要时限制参与。需要报告行为问题时，请通过仓库维护者提供的私密联系方式处理；在公开仓库尚未配置私密渠道前，不要公开敏感个人信息。
+Contributors must respect different backgrounds and levels of knowledge, discuss facts and implementations rather than individuals, provide sources and actionable guidance when correcting errors, and respect Indigenous knowledge, cultural names, image authors, and source institutions. Harassment, discrimination, threats, insults, and disclosure of private information are not acceptable.
 
-本准则适用于项目仓库及代表项目参与的公开空间。
+Maintainers may edit or remove issues, comments, commits, or other contributions that violate this policy and may restrict participation when necessary. Report conduct concerns through the repository maintainer's private contact channel. Until a private channel is configured, do not disclose sensitive personal information publicly.
+
+This policy applies in the repository and in public spaces where someone represents the project.

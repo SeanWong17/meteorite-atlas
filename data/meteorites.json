@@ -741,6 +741,67 @@
       ]
     },
     {
+      "id": "sericho",
+      "name": {
+        "zh": "塞里乔",
+        "en": "Sericho"
+      },
+      "aliases": [
+        "Habaswein",
+        "Sericho pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "pallasite",
+      "event": {
+        "kind": "find",
+        "year": 2016,
+        "labelZh": "2016年确认发现；当地牧民此前已知这些石块数十年"
+      },
+      "location": {
+        "countryZh": "肯尼亚",
+        "regionZh": "Isiolo郡Habaswein以西、Sericho以南",
+        "coordinates": [
+          39.1023,
+          1.0948
+        ],
+        "coordinateRole": "MBDB推荐的散布区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "reported-extent",
+          "dimensions": {
+            "majorAxisKm": 45,
+            "minorAxisKm": null,
+            "radiusKm": null,
+            "areaKm2": null
+          },
+          "dimensionStatus": "reported",
+          "boundaryConfidence": "low",
+          "descriptionZh": "MBDB报告碎块散布带超过45公里，但没有给出足以复原边界的端点和宽度；地图只显示官方推荐代表点，不绘制猜测性轴线。"
+        }
+      },
+      "summaryZh": "2016年，肯尼亚东北部牧民熟知多年的大块金属石被确认为橄榄陨铁，已回收质量超过2.8吨。切片中橄榄石约占可见面积的70%，适合说明地方知识、科学确认与散布区证据之间的区别。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Sericho pallasite meteorite",
+          "Sericho meteorite Kenya"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Sericho",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=65717"
+        },
+        {
+          "title": "Meteoritical Bulletin No. 106",
+          "url": "https://doi.org/10.1111/maps.13215"
+        }
+      ]
+    },
+    {
       "id": "imilac",
       "name": {
         "zh": "伊米拉克",

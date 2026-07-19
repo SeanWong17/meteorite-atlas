@@ -44,9 +44,9 @@ test("uses one panel at a time on a phone", async ({ page }) => {
   await expect(page.locator(".catalog-panel")).not.toBeVisible();
 });
 
-test("keeps the 320px toolbar and content within the viewport", async ({ page }) => {
+test("keeps the English 320px toolbar and content within the viewport", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
-  await page.goto("/");
+  await page.goto("/?lang=en");
 
   const layout = await page.evaluate(() => {
     const brand = document.querySelector(".brand-lockup").getBoundingClientRect();
@@ -60,9 +60,9 @@ test("keeps the 320px toolbar and content within the viewport", async ({ page })
   expect(layout.scrollWidth).toBe(layout.viewportWidth);
   expect(layout.toolbarGap).toBeGreaterThanOrEqual(4);
 
-  await page.getByRole("button", { name: "详情" }).click();
+  await page.getByRole("button", { name: "Details" }).click();
   await expect(page.locator(".detail-panel")).toBeVisible();
-  await expect(page.getByRole("navigation", { name: "移动端视图" })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Mobile views" })).toBeVisible();
 });
 
 test("opens a guided comparison and returns to a selected record", async ({ page }) => {
@@ -88,6 +88,42 @@ test("supports shareable state and browser history", async ({ page }) => {
   await page.goBack();
   await expect(page.locator("#detail-title")).toHaveText("霍巴");
   await expect(page).toHaveURL(/meteorite=hoba/);
+});
+
+test("switches the complete interface and Sericho record between languages", async ({ page }) => {
+  await page.goto("/?meteorite=sericho&lang=en");
+
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(page.getByRole("heading", { name: "Meteorite Atlas" })).toBeVisible();
+  await expect(page.locator("#detail-title")).toHaveText("Sericho");
+  await expect(page.locator(".detail-summary")).toContainText("northeastern Kenya");
+  await expect(page.locator(".meteorite-image img")).toHaveAttribute("src", /assets\/meteorites\/sericho\.jpg$/);
+  await expect(page.getByRole("button", { name: "Toggle globe auto-rotation" })).toHaveAttribute("aria-pressed", "false");
+
+  await page.getByRole("button", { name: "切换到中文" }).click();
+  await expect(page.locator("html")).toHaveAttribute("lang", "zh-CN");
+  await expect(page.locator("#detail-title")).toHaveText("塞里乔");
+  await expect(page).not.toHaveURL(/lang=en/);
+});
+
+test("keeps the globe centered and stops auto-rotation on manual input", async ({ page }) => {
+  await page.goto("/?meteorite=sericho");
+  const globe = page.locator(".globe-canvas");
+  await expect(globe).toHaveAttribute("data-controls-target-distance", "0.0000");
+
+  const rotateButton = page.getByRole("button", { name: "切换地球自动旋转" });
+  await rotateButton.click();
+  await expect(rotateButton).toHaveAttribute("aria-pressed", "true");
+
+  const canvas = page.locator("canvas");
+  const box = await canvas.boundingBox();
+  await page.mouse.move(box.x + box.width * 0.55, box.y + box.height * 0.5);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * 0.68, box.y + box.height * 0.36, { steps: 6 });
+  await page.mouse.up();
+
+  await expect(rotateButton).toHaveAttribute("aria-pressed", "false");
+  await expect(globe).toHaveAttribute("data-controls-target-distance", "0.0000");
 });
 
 test("respects reduced motion and loads approved images locally", async ({ page }) => {

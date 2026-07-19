@@ -1,31 +1,36 @@
-# 数据贡献指南
+# Data Contribution Guide
 
-## 贡献一个记录
+**English** | [简体中文](data-contribution.zh-CN.md)
 
-1. 在 MBDB 确认正式英文名、分类、事件性质和参考坐标。
-2. 搜集支持质量、历史、散布范围或展藏陈述的论文或机构来源。
-3. 按 `data/meteorites.schema.json` 添加记录，坐标顺序必须是 `[经度, 纬度]`。
-4. 根据 `docs/spatial-model.md` 选择覆盖类型和证据等级。
-5. 运行 `npm run validate:data`。
+[Live atlas](https://seanwong17.github.io/meteorite-atlas/) · [Documentation index](README.md)
 
-不要为了让地图“更完整”而编造范围。已知存在散布区但没有可复核几何时，使用 `pending-digitization`，保留说明即可。
+## Add a Record
 
-## 图片策展流程
+1. Confirm the official English name, classification, event type, and reference coordinates in the MBDB.
+2. Find papers or institutional sources for claims about mass, history, distribution, or collection location.
+3. Add the Chinese primary record to `data/meteorites.json`; coordinates must use `[longitude, latitude]`.
+4. Add every required English field under the same ID in `data/meteorites.en.json`.
+5. Select a coverage type and evidence level using the [spatial model](spatial-model.md).
+6. Run `npm run validate:data`.
 
-1. 在记录的 `image.searchTerms` 中添加英文正式名和必要别名。
-2. 运行 `npm run fetch:images`。新结果只会标记为 `needs-review`。
-3. 人工打开 Commons 文件页，确认画面主体确实是对应陨石，而不是同名人物、地名、纪念碑或古籍。
-4. 检查作者、许可证、原始文件页和图片说明。
-5. 将正确候选改为 `approved`，填写 `reviewedAt` 与 `reviewedBy`。
-6. 运行 `npm run cache:images` 生成本地文件和署名文档。
-7. 再次运行 `npm run validate:data`。
+Never invent a boundary to make the map look complete. If a strewn field is known but reproducible geometry is not available, retain a representative point or use `pending-digitization` with an explicit explanation. Sericho is an example: the MBDB reports an extent over 45 km but not enough geometry to draw a reliable line or polygon.
 
-无法确认时宁可使用“经核验图像待补”占位，不提交猜测性图片。
+## Image Curation
 
-## 空间字段检查
+1. Add official English names and necessary aliases to `image.searchTerms`.
+2. Run `npm run fetch:images`; new results are always `needs-review`.
+3. Open the Commons file page and confirm the subject is the exact meteorite, not a person, place, monument, or unrelated document with the same name.
+4. Verify author, license, original file page, and image description.
+5. Mark a correct candidate `approved` and add `reviewedAt` and `reviewedBy`.
+6. Run `npm run cache:images` to create the local file and bilingual attribution documents.
+7. Run `npm run validate:data` again.
 
-- `circle` 必须有 `radiusKm`。
-- `ellipse` 必须有长短轴。
-- `line` 至少有两个点。
-- `verified-boundary` 的 `polygon` 至少有三个点。
-- 编辑换算必须使用 `editorial-approximation` 并在中文说明中明确“示意”。
+Use the verified-image placeholder whenever identity remains uncertain.
+
+## Spatial Field Checks
+
+- `circle` requires `radiusKm`.
+- `ellipse` requires major and minor axes.
+- `line` requires at least two reproducible points.
+- A `verified-boundary` polygon requires at least three points.
+- Editorial conversions use `editorial-approximation` and must be explicitly labeled in both languages.

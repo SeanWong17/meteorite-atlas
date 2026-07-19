@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "0.1.0",
+  "locale": "en",
+  "scopeNote": "A curated learning dataset focused on iron meteorites and pallasites. It is not a complete global meteorite catalog.",
+  "meteorites": {
+    "aletai": {
+      "eventLabel": "First mass found in 1898",
+      "country": "China",
+      "region": "Altay, Xinjiang",
+      "coordinateRole": "Representative point for the strewn field",
+      "summary": "At least five major masses total more than 74 tonnes. Their composition and internal structure link them to one parent body, making Aletai a useful Chinese case study for long strewn fields, naming revisions, and Widmanstatten patterns.",
+      "coverageDescription": "Sources report a southeast-to-northwest strewn axis at least 430 km long. The dashed line represents only the reported axis, not a complete boundary."
+    },
+    "hoba": {
+      "eventLabel": "Found in 1920",
+      "country": "Namibia",
+      "region": "Hoba West farm, Otjozondjupa",
+      "coordinateRole": "In-place preservation site",
+      "summary": "With a mass above 60 tonnes, Hoba is the largest intact meteorite known at Earth's surface and has never been moved from its find site. It is an iron-nickel meteorite, not a pallasite, which makes it useful for separating scientific classes from trade labels.",
+      "coverageDescription": "A single mass remains at its original site, so no strewn field is shown."
+    },
+    "gibeon": {
+      "eventLabel": "First scientifically collected in 1836",
+      "country": "Namibia",
+      "region": "Near Gibeon, Hardap",
+      "coordinateRole": "Representative point for the strewn field",
+      "summary": "Nama communities worked its metal into tools long before scientific recognition. Its cut surfaces are known for fine Widmanstatten patterns, and a public installation in Windhoek makes Gibeon an important Namibian reference point.",
+      "coverageDescription": "Published estimates disagree on the long axis of the strewn field. The main view therefore hides this ellipse by default; the evidence layer can show a dashed 390 by 120 km summary extent."
+    },
+    "campo-del-cielo": {
+      "eventLabel": "Documented before 1576; impact about 4,000-5,000 years ago",
+      "country": "Argentina",
+      "region": "Chaco and Santiago del Estero provinces",
+      "coordinateRole": "Representative point for the strewn field",
+      "summary": "Its name means 'Field of Heaven.' Numerous iron masses and craters form a famous strewn field that includes the large Gancedo mass, illustrating how one meteorite shower can leave several craters and many recoverable fragments.",
+      "coverageDescription": "The reported 18.5 by 3 km area covers the central crater field. Small fragments may extend roughly 60 km, but that distance is not a verified boundary."
+    },
+    "sikhote-alin": {
+      "eventLabel": "Observed fall on 12 February 1947",
+      "country": "Russia",
+      "region": "Sikhote-Alin Mountains, Primorsky Krai",
+      "coordinateRole": "Representative point for the fall strewn field",
+      "summary": "A daylight fireball, explosions, and the resulting meteorite shower were widely observed, and more than 23 tonnes were recovered. Many fragments retain regmaglypts and fusion crust, making this a landmark example of atmospheric breakup and explosive fragmentation.",
+      "coverageDescription": "Sources report a strewn area of about 1.3 km2. The 0.64 km radius is an equal-area editorial conversion for orientation only, not a measured circular boundary."
+    },
+    "canyon-diablo": {
+      "eventLabel": "Found in 1891; impact about 49,000 years ago",
+      "country": "United States",
+      "region": "Near Meteor Crater, Coconino County, Arizona",
+      "coordinateRole": "Impact-crater-related find location",
+      "summary": "Canyon Diablo fragments are tied to the well-known Barringer Meteor Crater and became important evidence in the study of terrestrial impact craters. The case also shows that a meteorite name follows its find locality while the crater may have a different common name.",
+      "coverageDescription": "This point provides a geographic link to Meteor Crater; it is not the position of one specific fragment."
+    },
+    "cape-york": {
+      "eventLabel": "Known to Inuit communities for about a millennium; scientifically recorded in the 19th century",
+      "country": "Greenland",
+      "region": "Avannaata",
+      "coordinateRole": "Representative point for the find region",
+      "summary": "Inuit communities used this meteoritic iron as a rare metal source for generations. The largest named mass, Ahnighito, weighs about 31 tonnes and is now at the American Museum of Natural History. Its history cautions against treating European documentation as the only moment of discovery.",
+      "coverageDescription": "The meteorite includes several separately named masses. Original find points and present museum locations still need to be documented individually."
+    },
+    "willamette": {
+      "eventLabel": "Long known to Indigenous peoples; recognized by Euro-American society in 1902",
+      "country": "United States",
+      "region": "Near West Linn, Oregon",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "At about 15.5 tonnes, Willamette is one of the best-known large meteorites in the United States. The Clackamas and Grand Ronde peoples call it Tomanowos and regard it as sacred; its display in New York invites discussion of Indigenous knowledge and museum ethics.",
+      "coverageDescription": "The present museum location should be listed separately in the record and must not replace the Oregon find location on the map."
+    },
+    "muonionalusta": {
+      "eventLabel": "Found in 1906",
+      "country": "Sweden",
+      "region": "Near Kitkiojarvi, Norrbotten",
+      "coordinateRole": "Representative point for the find region",
+      "summary": "Fragments of this well-known Swedish iron meteorite occur near the Sweden-Finland border and have endured repeated glacial weathering. It demonstrates that meteorites can keep moving with glaciers and changing in appearance long after reaching Earth.",
+      "coverageDescription": "Sources summarize a roughly 25 by 15 km fragment distribution near the Sweden-Finland border. It is an extent guide, not a precise cadastral boundary."
+    },
+    "chinga": {
+      "eventLabel": "Found in 1913",
+      "country": "Russia",
+      "region": "Near the Chinge River, Tuva",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "Gold prospectors found multiple metallic fragments near the Chinge River, and later recoveries brought the known mass to several hundred kilograms. Revisions to its classification show that meteorite classes depend on chemical and structural evidence that can be updated.",
+      "coverageDescription": "Only a reference location near the river valley is currently documented."
+    },
+    "nantan": {
+      "eventLabel": "Officially recorded in 1958; local accounts are often linked to a 1516 fireball",
+      "country": "China",
+      "region": "Nandan, Guangxi",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "Chinese historical accounts often associate a 1516 explosion and 'stone rain' with Nantan, while the MBDB records the find year as 1958. It helps beginners distinguish oral or written tradition, a possible fall date, and formal scientific cataloging.",
+      "coverageDescription": "The interface presents the local historical account separately from the formal catalog year."
+    },
+    "bendego": {
+      "eventLabel": "Found in 1784",
+      "country": "Brazil",
+      "region": "Near Monte Santo, Bahia",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "Weighing about 5.36 tonnes, Bendego is Brazil's largest iron meteorite. Displayed at the National Museum of Brazil since 1888, it remained largely intact after the museum's 2018 fire and connects meteorites with collection care and disaster resilience.",
+      "coverageDescription": "Reference point for the find location of one large mass."
+    },
+    "mundrabilla": {
+      "eventLabel": "Found in 1911",
+      "country": "Australia",
+      "region": "Nullarbor Plain, Western Australia",
+      "coordinateRole": "Representative point for the find region",
+      "summary": "The total known mass is about 22 tonnes, with the largest piece around 12.4 tonnes, making Mundrabilla one of Australia's most important large iron meteorites. Its desert setting helps explain why arid regions favor meteorite preservation and recovery.",
+      "coverageDescription": "Several large masses were found in the desert; their individual positions still need to be documented."
+    },
+    "fukang": {
+      "eventLabel": "Found in 2000",
+      "country": "China",
+      "region": "Near Fukang, Xinjiang",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "When cut, the roughly 1,003 kg main mass reveals translucent yellow-green olivine crystals held in an iron-nickel matrix. Its Chinese locality, clear visual structure, and mixed metal-silicate composition make it an especially effective introductory pallasite.",
+      "coverageDescription": "Reference point for the find location of the main mass."
+    },
+    "sericho": {
+      "eventLabel": "Recognized in 2016; local herders had known the masses for decades",
+      "country": "Kenya",
+      "region": "West of Habaswein and south of Sericho, Isiolo County",
+      "coordinateRole": "MBDB-recommended representative point for the strewn field",
+      "summary": "In 2016, large metallic stones long known to herders in northeastern Kenya were recognized as a pallasite; more than 2.8 tonnes have been recovered. Olivine averages about 70% of visible slice area, making Sericho a strong case for connecting local knowledge, scientific recognition, and strewn-field evidence.",
+      "coverageDescription": "The MBDB reports a strewn field more than 45 km long but does not provide endpoints and width sufficient to reconstruct a boundary. The map therefore shows only the recommended reference point."
+    },
+    "imilac": {
+      "eventLabel": "Found in 1822",
+      "country": "Chile",
+      "region": "Northern Atacama Desert",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "Multiple masses totaling about 920 kg are scattered across the extremely dry Atacama Desert. Weathered metal frameworks and exposed olivine make Imilac a classic example for studying pallasite appearance and the advantages of desert meteorite hunting.",
+      "coverageDescription": "Sources report a main distribution about 8 km long, but no verifiable direction or width. The map shows a representative point rather than an invented axis or ellipse."
+    },
+    "brahin": {
+      "eventLabel": "Found in 1807",
+      "country": "Belarus",
+      "region": "Gomel Region",
+      "coordinateRole": "Representative point for the find region",
+      "summary": "Several masses were distributed through farmland, with a known total around 820 kg; another 227 kg mass was recovered from roughly three meters underground in 2002. Brahin shows how pieces of one meteorite can continue to be found centuries apart.",
+      "coverageDescription": "The 15 by 3 km figure is a generalized find extent, not a precise property or fall boundary."
+    },
+    "seymchan": {
+      "eventLabel": "Found in June 1967",
+      "country": "Russia",
+      "region": "Near the Hekandue riverbed, Magadan Oblast",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "Some slices are rich in olivine while other areas are almost entirely iron-nickel metal. This contrast makes the internal heterogeneity of a single meteorite easy to see and has made Seymchan highly recognizable in both research and collections.",
+      "coverageDescription": "Multiple tonnes have been recovered, but publicly verifiable find positions still need to be assembled."
+    },
+    "brenham": {
+      "eventLabel": "Found in 1882; multiple masses first reported in 1890",
+      "country": "United States",
+      "region": "Near Haviland, Kansas",
+      "coordinateRole": "Representative point for the find region",
+      "summary": "Long-term excavation has brought the recovered total to several tonnes. Polished slices show yellow-green olivine surrounded by metal, making Brenham a clear stony-iron teaching specimen that also connects a shallow crater, a find region, and prepared collection slices.",
+      "coverageDescription": "The meteorite is associated with the shallow Haviland crater, and long-term excavation has produced many find points."
+    },
+    "esquel": {
+      "eventLabel": "Found before 1951",
+      "country": "Argentina",
+      "region": "Near Esquel, Chubut Province",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "A buried mass of about 755 kg was recovered from the soil. Its slices are famous for large, evenly distributed gem-quality olivine and often serve as a standard visual example of a pallasite; it was a find, not an observed fall.",
+      "coverageDescription": "Reference point for the find location of the approximately 755 kg main mass."
+    },
+    "krasnojarsk": {
+      "eventLabel": "Found in 1749",
+      "country": "Russia",
+      "region": "Krasnoyarsk Krai",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "A mass of about 700 kg was found in the 18th century. Peter Simon Pallas's study of it gave pallasites their name, making Krasnojarsk central to explaining the origin of the class and the early history of modern meteoritics.",
+      "coverageDescription": "Reference point for the historic main-mass find location."
+    },
+    "huckitta": {
+      "eventLabel": "First piece found in 1924; about 1.4 tonnes found in 1937",
+      "country": "Australia",
+      "region": "Northeast of Alice Springs, Northern Territory",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "A small piece was found first, followed years later by a huge main mass on a cattle station, showing how recovery histories evolve. Its arid interior setting pairs well with Imilac and Mundrabilla when discussing preservation in dry environments.",
+      "coverageDescription": "The first piece and large main mass were found at different times; their precise positions still need to be documented."
+    },
+    "omolon": {
+      "eventLabel": "Observed fall on 16 May 1981; recovered in 1983",
+      "country": "Russia",
+      "region": "Magadan Oblast",
+      "coordinateRole": "Representative point for the fall location",
+      "summary": "A reindeer herder witnessed the fireball and fall, and a roughly 250 kg main mass was later recovered; weather-station records also support the event. Omolon connects an observed fireball with subsequent laboratory classification in one clear story.",
+      "coverageDescription": "One of the few pallasites with reliable eyewitness evidence, represented here by a recovery-location reference point."
+    },
+    "mineo": {
+      "eventLabel": "Observed fall on 3 May 1826",
+      "country": "Italy",
+      "region": "Mineo, Sicily",
+      "coordinateRole": "Reference point for the fall location",
+      "summary": "A bright meteor, loud detonations, and falling material were recorded, yet only a few dozen grams survive. Mineo shows that a dramatic observed fall does not necessarily leave a large amount of material for later study.",
+      "coverageDescription": "Very little material survives, so the coordinate is used only as a fall-location reference."
+    },
+    "zaisho": {
+      "eventLabel": "Observed fall on 1 February 1898",
+      "country": "Japan",
+      "region": "Shikoku",
+      "coordinateRole": "Reference point for the fall location",
+      "summary": "About 330 grams were recovered after a fireball. Despite its small mass, Zaisho is an observed pallasite fall and contrasts well with large finds such as Fukang and Esquel: scientific value is not determined by mass or market scale alone.",
+      "coverageDescription": "Because the surviving sample is small, the map retains a single-point representation."
+    },
+    "pallasovka": {
+      "eventLabel": "Found in July 1990",
+      "country": "Russia",
+      "region": "Near Pallasovka, Volgograd Oblast",
+      "coordinateRole": "Representative point for the find location",
+      "summary": "A mass of about 198 kg was found near a field. The place name happens to share its origin with Peter Pallas, but this is not the historic specimen that gave pallasites their name, making it a useful naming distinction.",
+      "coverageDescription": "Reference point for the field-side find location of one main mass."
+    },
+    "gyarub-zangbo": {
+      "eventLabel": "Found in October 2020",
+      "country": "China",
+      "region": "Northeast of Gyarub Zangbo, Qiangtang Plateau, Tibet",
+      "coordinateRole": "Representative point for the fragment find area",
+      "summary": "Numerous disaggregated fragments and larger metal-rich specimens were found on the Qiangtang Plateau in 2020. The MBDB revised it to an ungrouped pallasite in 2026, reflecting mineral and isotopic characteristics that do not fit the main group.",
+      "coverageDescription": "The MBDB records olivine-metal fragments and larger metal-rich specimens at two adjacent sites, which can be shown as two clustered points at closer zoom."
+    }
+  }
+}

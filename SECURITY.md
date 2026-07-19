@@ -1,7 +1,9 @@
-# 安全策略
+# Security Policy
 
-本项目是无账号、无服务端数据库的静态站点。安全问题主要涉及依赖、构建流程、外部链接和静态资源处理。
+**English** | [简体中文](SECURITY.zh-CN.md)
 
-请不要在公开 Issue 中披露可被直接利用的漏洞。优先使用仓库托管平台的私密安全报告功能，并说明受影响版本、复现方式和潜在影响。普通内容错误、失效链接和数据纠错可以使用公开 Issue。
+Meteorite Atlas is a static site with no accounts or server-side database. Security concerns primarily involve dependencies, build workflows, external links, and static asset handling.
 
-项目只维护默认分支上的最新版本。依赖检查由 CI 和 `npm audit` 辅助完成。
+Do not disclose an immediately exploitable vulnerability in a public issue. Prefer GitHub private vulnerability reporting and include the affected version, reproduction steps, and potential impact. Ordinary content errors, broken links, and data corrections can use public issues.
+
+Only the latest version on the default branch is maintained. CI and `npm audit` support dependency checks.

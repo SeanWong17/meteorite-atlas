@@ -1,24 +1,27 @@
-# 科普内容写作规范
+# Educational Content Guide
 
-## 读者
+**English** | [简体中文](content-guide.zh-CN.md)
 
-默认读者知道“陨石来自太空”，但不了解分类体系、数据库坐标、散布区和标本处理。解释应先回答“这意味着什么”，再给专业术语。
+[Live atlas](https://seanwong17.github.io/meteorite-atlas/) · [Documentation index](README.md)
 
-## 表述原则
+## Audience
 
-- 第一次出现专业术语时给出中文解释。
-- 区分观察事实、研究分类、历史记录和编辑换算。
-- 不使用“最珍贵”“顶级”“能量”等收藏或营销话术。
-- 不根据颜色、磁性或单张照片给出真伪鉴定结论。
-- 避免把欧洲科学记录写成当地人“首次发现”的唯一时间。
-- 橄榄陨铁应写为“石铁陨石的一类”，不能等同于全部石铁陨石。
+Assume readers know that meteorites come from space but do not yet understand classification, database coordinates, strewn fields, or specimen preparation. Explain what a fact means before introducing specialist terminology.
 
-## 摘要结构
+## Writing Principles
 
-每条 `summaryZh` 建议包含三部分：最值得记住的事实、它能解释的科学概念、容易混淆的边界。长度以 70 至 140 个汉字为宜。
+- Define a technical term at first use.
+- Separate observation, research classification, historical record, and editorial conversion.
+- Avoid collection-market claims such as “most valuable,” “top grade,” or “energy.”
+- Never authenticate a meteorite from color, magnetism, or one photograph.
+- Do not present European scientific documentation as the only moment of discovery when local knowledge predates it.
+- Describe a pallasite as one type of stony-iron meteorite, not all stony-irons.
+- Maintain complete Chinese and English counterparts with the same factual claims and source scope.
 
-摘要后会显示段落级来源编号。质量、文化史、撞击年代或散布范围等具体陈述应在 `sources` 中有可对应的资料；MBDB 不支持的陈述需要补充论文、博物馆或机构来源。
+## Summary Structure
 
-## 图片说明
+Each Chinese `summaryZh` and English `summary` should include the most memorable fact, the scientific idea it can teach, and an important boundary or common misunderstanding. Concrete claims about mass, cultural history, impact age, or spatial extent need matching sources. Claims unsupported by the MBDB require a paper, museum, or institutional source.
 
-“看图时留意”描述可观察特征，不把照片当作独立鉴定工具。应说明切面、酸蚀、逆光、风化或拍摄条件可能造成的视觉差异。
+## Image Guidance
+
+“What to notice” describes observable features without treating a photograph as an authentication tool. Mention when cutting, etching, transmitted light, weathering, or photography can alter appearance.

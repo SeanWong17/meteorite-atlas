@@ -4,6 +4,23 @@
   "private": true,
   "type": "module",
   "description": "A beginner-friendly interactive meteorite atlas.",
+  "homepage": "https://seanwong17.github.io/meteorite-atlas/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SeanWong17/meteorite-atlas.git"
+  },
+  "keywords": [
+    "meteorite",
+    "pallasite",
+    "meteoritics",
+    "threejs",
+    "react",
+    "interactive-globe",
+    "science-education",
+    "data-visualization",
+    "open-data",
+    "i18n"
+  ],
   "engines": {
     "node": ">=18.0.0"
   },

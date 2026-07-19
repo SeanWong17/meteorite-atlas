@@ -188,6 +188,7 @@ a {
 
 .guide-button,
 .toggle-control,
+.language-button,
 .icon-button {
   min-height: 36px;
   border: 1px solid rgba(137, 183, 202, 0.28);
@@ -203,6 +204,23 @@ a {
   gap: 7px;
   padding: 0 11px;
   cursor: pointer;
+}
+
+.language-button {
+  position: relative;
+  display: inline-flex;
+  min-width: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.language-button svg {
+  color: #9fc7d2;
 }
 
 .guide-button svg {
@@ -268,6 +286,7 @@ a {
 }
 
 .guide-button:hover,
+.language-button:hover,
 .icon-button:hover,
 .icon-button.active {
   border-color: #b8ce8a;
@@ -1220,6 +1239,7 @@ a {
 
   .guide-button,
   .toggle-control,
+  .language-button,
   .icon-button {
     min-height: 34px;
   }
@@ -1233,6 +1253,11 @@ a {
   .guide-button {
     padding-inline: 8px;
     font-size: 11px;
+  }
+
+  .language-button {
+    min-width: 44px;
+    padding-inline: 6px;
   }
 
   .toggle-control {
@@ -1293,10 +1318,20 @@ a {
   }
 
   .guide-button,
-  .toggle-control {
+  .toggle-control,
+  .language-button {
     width: 34px;
+    min-width: 34px;
     padding: 0;
     justify-content: center;
+  }
+
+  .language-button svg {
+    display: none;
+  }
+
+  .language-button span {
+    font-size: 10px;
   }
 
   .toggle-track {

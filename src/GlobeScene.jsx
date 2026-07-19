@@ -44,6 +44,21 @@ const SURFACE_AXIS = new Vector3(0, 0, 1);
 const publicAssetUrl = (path) =>
   `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
+const sceneCopy = {
+  zh: {
+    webgl: "当前浏览器无法启动 WebGL。仍可使用目录和详情浏览全部记录。",
+    texture: "地球表面纹理未能加载。请检查静态资源路径后重试。",
+    ariaLabel: "可旋转的全球陨石分布地图",
+    boundaryWarning: "部分辅助地图资源未加载",
+  },
+  en: {
+    webgl: "WebGL could not start in this browser. The catalog and record details remain available.",
+    texture: "The Earth texture could not load. Check the static asset path and try again.",
+    ariaLabel: "Rotatable global meteorite distribution map",
+    boundaryWarning: "Some supporting map resources did not load",
+  },
+};
+
 const toRadians = (degrees) => (degrees * Math.PI) / 180;
 const toDegrees = (radians) => (radians * 180) / Math.PI;
 
@@ -388,16 +403,30 @@ const makeCoverage = (meteorite) => {
 };
 
 const GlobeScene = forwardRef(function GlobeScene(
-  { meteorites, visibleIds, selectedId, showCoverage, autoRotate, onSelect },
+  {
+    meteorites,
+    visibleIds,
+    selectedId,
+    showCoverage,
+    autoRotate,
+    locale,
+    onSelect,
+    onInteraction,
+  },
   ref,
 ) {
   const mountRef = useRef(null);
   const sceneStateRef = useRef(null);
   const onSelectRef = useRef(onSelect);
+  const onInteractionRef = useRef(onInteraction);
+  const localeRef = useRef(locale);
   const tooltipRef = useRef(null);
   const [sceneError, setSceneError] = useState("");
   const [boundaryFailed, setBoundaryFailed] = useState(false);
   onSelectRef.current = onSelect;
+  onInteractionRef.current = onInteraction;
+  localeRef.current = locale;
+  const labels = sceneCopy[locale] ?? sceneCopy.zh;
 
   useImperativeHandle(ref, () => ({
     focusOn(meteorite) {
@@ -410,7 +439,7 @@ const GlobeScene = forwardRef(function GlobeScene(
         fromPosition: state.camera.position.clone(),
         toPosition: normal.clone().multiplyScalar(6.85),
         fromTarget: state.controls.target.clone(),
-        toTarget: normal.clone().multiplyScalar(GLOBE_RADIUS * 0.76),
+        toTarget: ORIGIN.clone(),
       };
       state.requestRender();
     },
@@ -448,7 +477,7 @@ const GlobeScene = forwardRef(function GlobeScene(
         preserveDrawingBuffer: false,
       });
     } catch {
-      setSceneError("当前浏览器无法启动 WebGL。仍可使用目录和详情浏览全部记录。");
+      setSceneError("webgl");
       return undefined;
     }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isCompact ? 1.25 : 2));
@@ -476,7 +505,7 @@ const GlobeScene = forwardRef(function GlobeScene(
         sceneStateRef.current?.requestRender?.();
       },
       undefined,
-      () => setSceneError("地球表面纹理未能加载。请检查静态资源路径后重试。"),
+      () => setSceneError("texture"),
     );
     const cloudTexture = textureLoader.load(
       publicAssetUrl("assets/earth-clouds.png"),
@@ -601,7 +630,8 @@ const GlobeScene = forwardRef(function GlobeScene(
       if (hit?.object.userData.meteorite) {
         const bounds = renderer.domElement.getBoundingClientRect();
         tooltip.hidden = false;
-        tooltip.textContent = hit.object.userData.meteorite.name.zh;
+        const meteorite = hit.object.userData.meteorite;
+        tooltip.textContent = localeRef.current === "en" ? meteorite.name.en : meteorite.name.zh;
         tooltip.style.left = `${event.clientX - bounds.left}px`;
         tooltip.style.top = `${event.clientY - bounds.top}px`;
       } else {
@@ -678,6 +708,7 @@ const GlobeScene = forwardRef(function GlobeScene(
         }
       }
       const controlsChanged = controls.update();
+      mount.dataset.controlsTargetDistance = controls.target.length().toFixed(4);
       renderer.render(scene, camera);
       if (import.meta.env.DEV && !mount.dataset.pixelSample) {
         const context = renderer.getContext();
@@ -728,6 +759,8 @@ const GlobeScene = forwardRef(function GlobeScene(
       }
     };
     controls.addEventListener("change", requestRender);
+    const onControlStart = () => onInteractionRef.current?.();
+    controls.addEventListener("start", onControlStart);
     document.addEventListener("visibilitychange", onVisibilityChange);
     requestRender();
 
@@ -739,6 +772,7 @@ const GlobeScene = forwardRef(function GlobeScene(
       renderer.domElement.removeEventListener("pointerleave", onPointerLeave);
       renderer.domElement.removeEventListener("click", onClick);
       controls.removeEventListener("change", requestRender);
+      controls.removeEventListener("start", onControlStart);
       document.removeEventListener("visibilitychange", onVisibilityChange);
       controls.dispose();
       earthTexture.dispose();
@@ -768,7 +802,7 @@ const GlobeScene = forwardRef(function GlobeScene(
       fromPosition: state.camera.position.clone(),
       toPosition: normal.clone().multiplyScalar(6.85),
       fromTarget: state.controls.target.clone(),
-      toTarget: normal.clone().multiplyScalar(GLOBE_RADIUS * 0.76),
+      toTarget: ORIGIN.clone(),
     };
     state.requestRender();
   }, [meteorites, selectedId]);
@@ -803,13 +837,13 @@ const GlobeScene = forwardRef(function GlobeScene(
   }, [autoRotate]);
 
   if (sceneError) {
-    return <div className="globe-error" role="status"><span>{sceneError}</span></div>;
+    return <div className="globe-error" role="status"><span>{labels[sceneError]}</span></div>;
   }
 
   return (
-    <div className="globe-canvas" ref={mountRef} role="img" aria-label="可旋转的全球陨石分布地图">
+    <div className="globe-canvas" ref={mountRef} role="img" aria-label={labels.ariaLabel}>
       <span className="marker-tooltip" ref={tooltipRef} hidden />
-      {boundaryFailed && <span className="boundary-warning" role="status">部分辅助地图资源未加载</span>}
+      {boundaryFailed && <span className="boundary-warning" role="status">{labels.boundaryWarning}</span>}
     </div>
   );
 });
