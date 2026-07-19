@@ -1,0 +1,1343 @@
+{
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-07-19",
+  "coordinateOrder": "[longitude, latitude]",
+  "sourcePolicy": "MBDB is the primary source for official names, classifications and reference coordinates.",
+  "scopeNoteZh": "面向初级爱好者的精选学习数据集，当前聚焦铁陨石与橄榄陨铁，不代表全球陨石完整名录。",
+  "contentLicense": "CC BY 4.0 applies to original editorial text and data structure; cited source material retains its original terms.",
+  "meteorites": [
+    {
+      "id": "aletai",
+      "name": {
+        "zh": "阿勒泰",
+        "en": "Aletai"
+      },
+      "aliases": [
+        "阿尔曼提",
+        "Armanty",
+        "Xinjiang"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IIIE-an, coarse octahedrite",
+      "event": {
+        "kind": "find",
+        "year": 1898,
+        "labelZh": "1898年首块发现"
+      },
+      "location": {
+        "countryZh": "中国",
+        "regionZh": "新疆阿勒泰",
+        "coordinates": [
+          90.5047,
+          45.8711
+        ],
+        "coordinateRole": "散布区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "line",
+          "confidence": "reported-extent",
+          "points": [
+            [
+              91.4025,
+              44.9567
+            ],
+            [
+              88.2762,
+              48.1042
+            ]
+          ],
+          "dimensions": {
+            "majorAxisKm": 430,
+            "minorAxisKm": null,
+            "radiusKm": null,
+            "areaKm2": null
+          },
+          "dimensionStatus": "reported",
+          "boundaryConfidence": "medium",
+          "descriptionZh": "资料报道至少430公里的东南至西北散布主轴。虚线只表示已报道的轴线，不代表完整边界。"
+        }
+      },
+      "summaryZh": "至少五块主要碎体的总质量超过74吨。研究者依据成分和内部结构把它们归为同一母体，是讲解长期散布场、命名更新和铁陨石维德曼花纹的中国起点。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Aletai meteorite",
+          "Armanty meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Aletai",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=64400"
+        },
+        {
+          "title": "Aletai meteorite shower research",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9232108/"
+        }
+      ]
+    },
+    {
+      "id": "hoba",
+      "name": {
+        "zh": "霍巴",
+        "en": "Hoba"
+      },
+      "aliases": [
+        "Hoba West"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IVB iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": 1920,
+        "labelZh": "1920年发现"
+      },
+      "location": {
+        "countryZh": "纳米比亚",
+        "regionZh": "Otjozondjupa, Hoba West农场",
+        "coordinates": [
+          17.9336,
+          -19.5925
+        ],
+        "coordinateRole": "原地保存地点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "单体原地保存，不以散布区表示。"
+        }
+      },
+      "summaryZh": "质量超过60吨，至今未被搬离原处，是地表最大的完整单体陨石。它由铁镍合金组成，不是橄榄陨铁，适合用来说明科学分类与市场俗称的区别。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Hoba meteorite Namibia"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Hoba",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=11890"
+        }
+      ]
+    },
+    {
+      "id": "gibeon",
+      "name": {
+        "zh": "基贝恩",
+        "en": "Gibeon"
+      },
+      "aliases": [
+        "Gibeon meteorite"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IVA, fine octahedrite",
+      "event": {
+        "kind": "find",
+        "year": 1836,
+        "labelZh": "1836年首次科学采集"
+      },
+      "location": {
+        "countryZh": "纳米比亚",
+        "regionZh": "Hardap, 基贝恩附近",
+        "coordinates": [
+          18,
+          -25.3333
+        ],
+        "coordinateRole": "散布区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "ellipse",
+          "confidence": "reported-extent",
+          "dimensions": {
+            "majorAxisKm": 390,
+            "minorAxisKm": 120,
+            "radiusKm": null,
+            "areaKm2": null
+          },
+          "dimensionStatus": "reported",
+          "boundaryConfidence": "low",
+          "descriptionZh": "研究资料对散布场长轴存在不同说法，主页面默认不显示此椭圆；研究图层可用虚线显示390乘120公里的概括范围。"
+        }
+      },
+      "summaryZh": "纳马人早已使用其金属制作工具，后来才被科学界确认。它的切面以细密维德曼花纹著称，温得和克有公共展示，是纳米比亚的重要地图点。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Gibeon meteorite Widmanstatten"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Gibeon",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=10912"
+        },
+        {
+          "title": "Aletai meteorite shower research, comparative discussion",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9232108/"
+        }
+      ]
+    },
+    {
+      "id": "campo-del-cielo",
+      "name": {
+        "zh": "天空之原",
+        "en": "Campo del Cielo"
+      },
+      "aliases": [
+        "坎波德尔谢洛",
+        "Field of the Sky"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IAB-MG iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": 1576,
+        "labelZh": "1576年前已有记载，坠落约4000至5000年前"
+      },
+      "location": {
+        "countryZh": "阿根廷",
+        "regionZh": "Chaco与Santiago del Estero省",
+        "coordinates": [
+          -61.7,
+          -27.6333
+        ],
+        "coordinateRole": "散布区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "ellipse",
+          "confidence": "reported-extent",
+          "dimensions": {
+            "majorAxisKm": 18.5,
+            "minorAxisKm": 3,
+            "radiusKm": null,
+            "areaKm2": null
+          },
+          "dimensionStatus": "reported",
+          "boundaryConfidence": "medium",
+          "descriptionZh": "18.5乘3公里是核心陨石坑区的报告范围；小碎片可延至约60公里，不能把60公里视作确定边界。"
+        }
+      },
+      "summaryZh": "名称意为“天空之原”。多块铁质碎体和陨石坑构成著名散布场，其中包括大型Gancedo质量，适合解释一次陨石雨为何会留下多个坑与可收藏碎块。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Campo del Cielo meteorite Gancedo"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Campo del Cielo",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=5247"
+        },
+        {
+          "title": "LPSC: Campo del Cielo strewnfield study",
+          "url": "https://www.lpi.usra.edu/meetings/lpsc2006/pdf/1102.pdf"
+        }
+      ]
+    },
+    {
+      "id": "sikhote-alin",
+      "name": {
+        "zh": "锡霍特-阿林",
+        "en": "Sikhote-Alin"
+      },
+      "aliases": [
+        "Sikhote Alin"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IIAB iron meteorite",
+      "event": {
+        "kind": "observed_fall",
+        "year": 1947,
+        "labelZh": "1947年2月12日目击坠落"
+      },
+      "location": {
+        "countryZh": "俄罗斯",
+        "regionZh": "滨海边疆区锡霍特-阿林山地",
+        "coordinates": [
+          134.6533,
+          46.16
+        ],
+        "coordinateRole": "坠落散布区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "circle",
+          "confidence": "editorial-approximation",
+          "dimensions": {
+            "majorAxisKm": null,
+            "minorAxisKm": null,
+            "radiusKm": 0.64,
+            "areaKm2": 1.3
+          },
+          "dimensionStatus": "estimated",
+          "boundaryConfidence": "medium",
+          "descriptionZh": "资料报告散布区面积约1.3平方公里；0.64公里半径为等面积圆换算，仅用于示意，不能当作实测圆形边界。"
+        }
+      },
+      "summaryZh": "白昼火球、爆炸和随后陨石雨都有目击记录，回收总量超过23吨。碎片常保留气印与熔壳，是展示大气破碎、个体陨石和爆炸型陨石雨的标志性事件。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Sikhote-Alin meteorite shrapnel"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Sikhote-Alin",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=23593"
+        }
+      ]
+    },
+    {
+      "id": "canyon-diablo",
+      "name": {
+        "zh": "魔鬼峡谷",
+        "en": "Canyon Diablo"
+      },
+      "aliases": [
+        "Meteor Crater meteorite"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IAB-MG iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": 1891,
+        "labelZh": "1891年发现，撞击约发生于4.9万年前"
+      },
+      "location": {
+        "countryZh": "美国",
+        "regionZh": "亚利桑那州Coconino County, Meteor Crater附近",
+        "coordinates": [
+          -111.0333,
+          35.05
+        ],
+        "coordinateRole": "撞击坑相关发现地"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "此点用于关联Meteor Crater，不等同于单一陨石碎片位置。"
+        }
+      },
+      "summaryZh": "它与著名的Barringer Meteor Crater相关，碎块是研究地球撞击坑的关键证据。初学者可通过它理解：陨石名称取发现地，而撞击坑可能另有通名。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Canyon Diablo meteorite Meteor Crater"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Canyon Diablo",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=5257"
+        }
+      ]
+    },
+    {
+      "id": "cape-york",
+      "name": {
+        "zh": "开普约克",
+        "en": "Cape York"
+      },
+      "aliases": [
+        "Ahnighito",
+        "Tent",
+        "Woman"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IIIAB iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": null,
+        "labelZh": "因纽特人约千年前已知，19世纪有科学记录"
+      },
+      "location": {
+        "countryZh": "格陵兰",
+        "regionZh": "Avannaata",
+        "coordinates": [
+          -64.9333,
+          76.1333
+        ],
+        "coordinateRole": "发现地区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "multi-point",
+          "confidence": "pending-digitization",
+          "descriptionZh": "包含多个有独立名称的质量，待补充各质量的原始发现点与博物馆展藏点。"
+        }
+      },
+      "summaryZh": "当地因纽特人长期将陨铁作为稀有金属来源。最大块Ahnighito约31吨，现藏美国自然历史博物馆；其跨文化史提醒我们不能把“发现”只写成欧洲人的首次记录。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Cape York meteorite Ahnighito"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Cape York",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=5262"
+        }
+      ]
+    },
+    {
+      "id": "willamette",
+      "name": {
+        "zh": "威拉米特",
+        "en": "Willamette"
+      },
+      "aliases": [
+        "Tomanowos"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IIIAB iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": 1902,
+        "labelZh": "原住民早已知，1902年获欧美社会确认"
+      },
+      "location": {
+        "countryZh": "美国",
+        "regionZh": "俄勒冈州West Linn附近",
+        "coordinates": [
+          -122.5833,
+          45.3667
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "同时应在详情页另列当前展藏地，不能把纽约展馆标为发现地点。"
+        }
+      },
+      "summaryZh": "重约15.5吨，是美国著名大型陨铁。Clackamas和Grand Ronde族称其Tomanowos并视为神圣之物；现展于纽约美国自然历史博物馆，适合讨论原住民知识与展藏伦理。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Willamette meteorite Tomanowos AMNH"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Willamette",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=24269"
+        },
+        {
+          "title": "American Museum of Natural History: Willamette Meteorite",
+          "url": "https://www.amnh.org/exhibitions/permanent/the-universe/planets/planetary-impacts/willamette-meteorite"
+        }
+      ]
+    },
+    {
+      "id": "muonionalusta",
+      "name": {
+        "zh": "穆奥尼奥纳卢斯塔",
+        "en": "Muonionalusta"
+      },
+      "aliases": [
+        "Muonionalusta meteorite"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IVA, fine octahedrite",
+      "event": {
+        "kind": "find",
+        "year": 1906,
+        "labelZh": "1906年发现"
+      },
+      "location": {
+        "countryZh": "瑞典",
+        "regionZh": "Norrbotten, Kitkiöjärvi近地",
+        "coordinates": [
+          23.1133,
+          67.8
+        ],
+        "coordinateRole": "发现地区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "ellipse",
+          "confidence": "reported-extent",
+          "dimensions": {
+            "majorAxisKm": 25,
+            "minorAxisKm": 15,
+            "radiusKm": null,
+            "areaKm2": null
+          },
+          "dimensionStatus": "reported",
+          "boundaryConfidence": "medium",
+          "descriptionZh": "资料概括碎片分布约25乘15公里，横跨瑞典和芬兰边界附近；作为范围提示，不是精确地籍边界。"
+        }
+      },
+      "summaryZh": "这颗著名瑞典铁陨石的碎块分布在瑞典和芬兰边界附近，并经历多次冰期风化。它很适合说明陨石落到地球后仍会被冰川搬运，外观也会持续改变。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Muonionalusta meteorite Widmanstatten"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Muonionalusta",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=16873"
+        }
+      ]
+    },
+    {
+      "id": "chinga",
+      "name": {
+        "zh": "钦加",
+        "en": "Chinga"
+      },
+      "aliases": [
+        "Chinge"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "ungrouped iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": 1913,
+        "labelZh": "1913年发现"
+      },
+      "location": {
+        "countryZh": "俄罗斯",
+        "regionZh": "图瓦, Chinge River附近",
+        "coordinates": [
+          94.4,
+          51.0583
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "已知的是河谷附近发现地参考点。"
+        }
+      },
+      "summaryZh": "淘金者在钦加河附近找到多块金属碎片，后续回收总量达到数百千克。它的分类曾随新分析调整，适合强调陨石分类来自可更新的化学和结构证据。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Chinga meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Chinga",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=5353"
+        }
+      ]
+    },
+    {
+      "id": "nantan",
+      "name": {
+        "zh": "南丹",
+        "en": "Nantan"
+      },
+      "aliases": [
+        "Nandan"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IAB-MG iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": 1958,
+        "labelZh": "1958年正式记录；地方叙述常关联1516年火球"
+      },
+      "location": {
+        "countryZh": "中国",
+        "regionZh": "广西南丹",
+        "coordinates": [
+          107.7,
+          25.1
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "页面会分开呈现地方传说与正式编录年份。"
+        }
+      },
+      "summaryZh": "中国历史叙述中常把1516年爆炸和“石雨”与它关联，但MBDB的发现记录为1958。它适合提示初学者分辨传说、可能坠落时间和正式科学编录时间。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Nantan meteorite China"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Nantan",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=16906"
+        }
+      ]
+    },
+    {
+      "id": "bendego",
+      "name": {
+        "zh": "本德戈",
+        "en": "Bendego"
+      },
+      "aliases": [
+        "Pedra do Bendego"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "iron meteorite",
+      "event": {
+        "kind": "find",
+        "year": 1784,
+        "labelZh": "1784年发现"
+      },
+      "location": {
+        "countryZh": "巴西",
+        "regionZh": "Bahia州Monte Santo附近",
+        "coordinates": [
+          -39.2614,
+          -10.1169
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "单一大型质量的发现地点参考。"
+        }
+      },
+      "summaryZh": "重约5.36吨，是巴西最大的铁陨石。它从1888年起在巴西国家博物馆展出，2018年博物馆大火后仍基本完好，是连接陨石、馆藏保存与灾害韧性的生动案例。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Bendego meteorite Museu Nacional"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Museu Nacional: Pedra do Bendego",
+          "url": "https://www.museunacional.ufrj.br/MuseuNacional/Geologia/geo_expo/E_geologia1.htm"
+        }
+      ]
+    },
+    {
+      "id": "mundrabilla",
+      "name": {
+        "zh": "芒德拉比拉",
+        "en": "Mundrabilla"
+      },
+      "aliases": [
+        "Mundrabilla meteorite"
+      ],
+      "category": "iron",
+      "categoryZh": "铁陨石",
+      "classification": "IAB iron meteorite, Mundrabilla grouplet",
+      "event": {
+        "kind": "find",
+        "year": 1911,
+        "labelZh": "1911年发现"
+      },
+      "location": {
+        "countryZh": "澳大利亚",
+        "regionZh": "西澳州Nullarbor Plain",
+        "coordinates": [
+          127.55,
+          -30.7833
+        ],
+        "coordinateRole": "发现地区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "multi-point",
+          "confidence": "pending-digitization",
+          "descriptionZh": "荒漠中发现多个大块碎片，待补充各质量的位置。"
+        }
+      },
+      "summaryZh": "总已知质量约22吨，最大单块约12.4吨，是澳大利亚最重要的大型铁陨石之一。荒漠环境保存了多个大块碎片，适合说明干旱地区为何利于搜寻和保存。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Mundrabilla meteorite Australia"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Mundrabilla",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=16852"
+        }
+      ]
+    },
+    {
+      "id": "fukang",
+      "name": {
+        "zh": "阜康",
+        "en": "Fukang"
+      },
+      "aliases": [
+        "Fukang pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite (PMG)",
+      "event": {
+        "kind": "find",
+        "year": 2000,
+        "labelZh": "2000年发现"
+      },
+      "location": {
+        "countryZh": "中国",
+        "regionZh": "新疆阜康附近",
+        "coordinates": [
+          87.6333,
+          44.4333
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "主块发现地参考点。"
+        }
+      },
+      "summaryZh": "约1003千克主块切开后呈现透明至黄绿色橄榄石晶体嵌在铁镍金属基质中的典型纹理。它兼具中国地点、清晰视觉特征和核幔混合物的科普价值。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Fukang pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Fukang",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=34491"
+        },
+        {
+          "title": "LPSC: Fukang pallasite study",
+          "url": "https://www.lpi.usra.edu/meetings/lpsc2006/pdf/2250.pdf"
+        }
+      ]
+    },
+    {
+      "id": "imilac",
+      "name": {
+        "zh": "伊米拉克",
+        "en": "Imilac"
+      },
+      "aliases": [
+        "Imilac pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1822,
+        "labelZh": "1822年发现"
+      },
+      "location": {
+        "countryZh": "智利",
+        "regionZh": "阿塔卡马沙漠北部",
+        "coordinates": [
+          -68.8086,
+          -24.2128
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "reported-extent",
+          "dimensions": {
+            "majorAxisKm": 8,
+            "minorAxisKm": null,
+            "radiusKm": null,
+            "areaKm2": null
+          },
+          "dimensionStatus": "reported",
+          "boundaryConfidence": "medium",
+          "descriptionZh": "资料报告主要散布区约8公里长，但没有可复核的方向和宽度；地图只显示代表点，不绘制猜测性轴线或椭圆。"
+        }
+      },
+      "summaryZh": "多块碎体散布于极干旱的阿塔卡马沙漠，总量约920千克。风化后的金属网状骨架和橄榄石晶体都很醒目，是解释橄榄陨铁外观与沙漠搜寻优势的经典案例。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Imilac pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Imilac",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=12025"
+        }
+      ]
+    },
+    {
+      "id": "brahin",
+      "name": {
+        "zh": "布拉金",
+        "en": "Brahin"
+      },
+      "aliases": [
+        "Bragin",
+        "Brahinsk"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1807,
+        "labelZh": "1807年发现"
+      },
+      "location": {
+        "countryZh": "白俄罗斯",
+        "regionZh": "Gomel州",
+        "coordinates": [
+          30.3333,
+          52.5
+        ],
+        "coordinateRole": "发现地区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "ellipse",
+          "confidence": "reported-extent",
+          "dimensions": {
+            "majorAxisKm": 15,
+            "minorAxisKm": 3,
+            "radiusKm": null,
+            "areaKm2": null
+          },
+          "dimensionStatus": "reported",
+          "boundaryConfidence": "medium",
+          "descriptionZh": "15乘3公里为概括的发现范围，不作为精确地籍或实际坠落边界。"
+        }
+      },
+      "summaryZh": "多个碎块分布在农田中，已知总量约820千克，2002年又从地下约3米处取出227千克块体。它说明同一陨石在数百年后仍可能陆续被发现。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Brahin pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Brahin",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=5130"
+        }
+      ]
+    },
+    {
+      "id": "seymchan",
+      "name": {
+        "zh": "谢姆昌",
+        "en": "Seymchan"
+      },
+      "aliases": [
+        "塞姆昌",
+        "随城",
+        "Seymchan pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1967,
+        "labelZh": "1967年6月发现"
+      },
+      "location": {
+        "countryZh": "俄罗斯",
+        "regionZh": "马加丹州, Hekandue河床附近",
+        "coordinates": [
+          152.4333,
+          62.9
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "multi-point",
+          "confidence": "pending-digitization",
+          "descriptionZh": "已发现多块吨级物质，待整理可公开复核的发现位置。"
+        }
+      },
+      "summaryZh": "有些切片橄榄石丰富，有些区域几乎只剩铁镍金属；这种并置让初学者能直观看到同一陨石内部并不均一。它是橄榄陨铁研究与收藏中辨识度很高的标本。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Seymchan pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Seymchan",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=23510"
+        }
+      ]
+    },
+    {
+      "id": "brenham",
+      "name": {
+        "zh": "布伦纳姆",
+        "en": "Brenham"
+      },
+      "aliases": [
+        "Haviland meteorite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "anomalous pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1882,
+        "labelZh": "1882年发现，1890年首次报告多块"
+      },
+      "location": {
+        "countryZh": "美国",
+        "regionZh": "堪萨斯州Haviland近地",
+        "coordinates": [
+          -99.1636,
+          37.5825
+        ],
+        "coordinateRole": "发现地区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "polygon",
+          "confidence": "pending-digitization",
+          "descriptionZh": "与浅的Haviland陨石坑相关，长期挖掘形成多发现点。"
+        }
+      },
+      "summaryZh": "长期挖掘使回收总量达到数吨。抛光后黄绿色橄榄石被金属包围，是典型的石铁视觉教材，也能连接撞击坑、发现区域与收藏切片。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Brenham pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Brenham",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=5136"
+        }
+      ]
+    },
+    {
+      "id": "esquel",
+      "name": {
+        "zh": "埃斯克尔",
+        "en": "Esquel"
+      },
+      "aliases": [
+        "Esquel pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1951,
+        "labelZh": "1951年前发现"
+      },
+      "location": {
+        "countryZh": "阿根廷",
+        "regionZh": "Chubut省Esquel附近",
+        "coordinates": [
+          -71.3333,
+          -42.9
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "约755千克主块的发现地点参考。"
+        }
+      },
+      "summaryZh": "一块约755千克的大质量标本埋在土中被发现。其切片以均匀、较大的宝石级橄榄石闻名，常被用作橄榄陨铁的标准图像；它是发现而非目击坠落。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Esquel pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Esquel",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=10054"
+        }
+      ]
+    },
+    {
+      "id": "krasnojarsk",
+      "name": {
+        "zh": "克拉斯诺亚尔斯克",
+        "en": "Krasnojarsk"
+      },
+      "aliases": [
+        "Pallas Iron",
+        "Krasnoyarsk"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1749,
+        "labelZh": "1749年发现"
+      },
+      "location": {
+        "countryZh": "俄罗斯",
+        "regionZh": "Krasnoyarsk Krai",
+        "coordinates": [
+          91.8,
+          54.9
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "历史主块发现地参考。"
+        }
+      },
+      "summaryZh": "约700千克块体在18世纪被发现，彼得·西蒙·帕拉斯的研究使这类陨石得名pallasite。它是解释“橄榄陨铁”名称来源和现代陨石科学早期史的关键节点。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Krasnojarsk Pallas Iron meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Krasnojarsk",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=12356"
+        }
+      ]
+    },
+    {
+      "id": "huckitta",
+      "name": {
+        "zh": "哈基塔",
+        "en": "Huckitta"
+      },
+      "aliases": [
+        "Huckitta pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1924,
+        "labelZh": "1924年首块发现，1937年发现约1.4吨主块"
+      },
+      "location": {
+        "countryZh": "澳大利亚",
+        "regionZh": "北领地, Alice Springs东北",
+        "coordinates": [
+          135.7667,
+          -22.3667
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "multi-point",
+          "confidence": "pending-digitization",
+          "descriptionZh": "首块与大型主块在不同时间发现，待补充具体位置。"
+        }
+      },
+      "summaryZh": "先有小块被找到，后在牧场发现巨大主体，显示搜寻记录会随时间改变。它来自干旱内陆，适合与Imilac、Mundrabilla并列说明干燥环境对保存和发现的作用。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Huckitta pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Huckitta",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=11922"
+        }
+      ]
+    },
+    {
+      "id": "omolon",
+      "name": {
+        "zh": "奥莫隆",
+        "en": "Omolon"
+      },
+      "aliases": [
+        "Omolon pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "pallasite",
+      "event": {
+        "kind": "observed_fall",
+        "year": 1981,
+        "labelZh": "1981年5月16日目击坠落，1983年回收"
+      },
+      "location": {
+        "countryZh": "俄罗斯",
+        "regionZh": "马加丹州",
+        "coordinates": [
+          161.8083,
+          64.02
+        ],
+        "coordinateRole": "坠落地点代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "少数有可靠目击证据的橄榄陨铁，现以回收地点参考点表示。"
+        }
+      },
+      "summaryZh": "驯鹿牧民目击火球和坠落，后找回约250千克主块，气象站记录也支持这次事件。它可用一条故事线连接“看到火球”和“实验室完成分类”。",
+      "image": {
+        "status": "not-yet-curated",
+        "searchTerms": [
+          "Omolon pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Omolon",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=18019"
+        }
+      ]
+    },
+    {
+      "id": "mineo",
+      "name": {
+        "zh": "米内奥",
+        "en": "Mineo"
+      },
+      "aliases": [
+        "Mineo pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "main-group pallasite",
+      "event": {
+        "kind": "observed_fall",
+        "year": 1826,
+        "labelZh": "1826年5月3日目击坠落"
+      },
+      "location": {
+        "countryZh": "意大利",
+        "regionZh": "西西里Mineo",
+        "coordinates": [
+          14.7,
+          37.2833
+        ],
+        "coordinateRole": "坠落地点参考点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "留存样本很少，坐标用于坠落地点参考。"
+        }
+      },
+      "summaryZh": "明亮流星、巨响与落物都有记录，但留存样本仅几十克。它提醒初学者：一次坠落再壮观，最终保存下来的可研究物质不一定很多。",
+      "image": {
+        "status": "not-yet-curated",
+        "searchTerms": [
+          "Mineo pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Mineo",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=16696"
+        }
+      ]
+    },
+    {
+      "id": "zaisho",
+      "name": {
+        "zh": "在所",
+        "en": "Zaisho"
+      },
+      "aliases": [
+        "Zaisho pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "anomalous main-group pallasite",
+      "event": {
+        "kind": "observed_fall",
+        "year": 1898,
+        "labelZh": "1898年2月1日目击坠落"
+      },
+      "location": {
+        "countryZh": "日本",
+        "regionZh": "四国",
+        "coordinates": [
+          133.8,
+          33.7
+        ],
+        "coordinateRole": "坠落地点参考点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "样本小，先保留单点表达。"
+        }
+      },
+      "summaryZh": "火球出现后回收约330克物质。虽然样本很小，它却是有目击记录的橄榄陨铁，能与大块的阜康、埃斯克尔形成对比：分类价值不由质量或市场体量单独决定。",
+      "image": {
+        "status": "not-yet-curated",
+        "searchTerms": [
+          "Zaisho pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Zaisho",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=30389"
+        }
+      ]
+    },
+    {
+      "id": "pallasovka",
+      "name": {
+        "zh": "帕拉索夫卡",
+        "en": "Pallasovka"
+      },
+      "aliases": [
+        "Pallasovka pallasite"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "anomalous main-group pallasite",
+      "event": {
+        "kind": "find",
+        "year": 1990,
+        "labelZh": "1990年7月发现"
+      },
+      "location": {
+        "countryZh": "俄罗斯",
+        "regionZh": "伏尔加格勒州Pallasovka附近",
+        "coordinates": [
+          46.6117,
+          49.8667
+        ],
+        "coordinateRole": "发现地代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "point",
+          "confidence": "official-coordinate",
+          "descriptionZh": "田野附近单个主块的发现地点参考。"
+        }
+      },
+      "summaryZh": "一块约198千克物质在田野附近被发现。地名与彼得·帕拉斯恰好同源，但并非同一历史标本；这是很适合做命名辨析的小知识。",
+      "image": {
+        "status": "curated",
+        "searchTerms": [
+          "Pallasovka pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Pallasovka",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=34061"
+        }
+      ]
+    },
+    {
+      "id": "gyarub-zangbo",
+      "name": {
+        "zh": "江爱藏布",
+        "en": "Gyarub Zangbo"
+      },
+      "aliases": [
+        "江爱藏布陨石",
+        "GZ"
+      ],
+      "category": "pallasite",
+      "categoryZh": "橄榄陨铁（石铁陨石的一类）",
+      "classification": "ungrouped pallasite",
+      "event": {
+        "kind": "find",
+        "year": 2020,
+        "labelZh": "2020年10月发现"
+      },
+      "location": {
+        "countryZh": "中国",
+        "regionZh": "西藏羌塘高原江爱藏布东北",
+        "coordinates": [
+          87.079,
+          33.126
+        ],
+        "coordinateRole": "碎片发现区代表点"
+      },
+      "map": {
+        "coverage": {
+          "kind": "multi-point",
+          "confidence": "official-coordinate",
+          "points": [
+            [
+              87.079,
+              33.126
+            ],
+            [
+              87.08,
+              33.127
+            ]
+          ],
+          "descriptionZh": "MBDB记载橄榄石加金属碎片与较大富金属样品在相邻两处发现；可在放大地图上显示为两个聚合点。"
+        }
+      },
+      "summaryZh": "2020年在羌塘高原发现大量解体碎片和较大的富金属样品。MBDB在2026年修订为未分组橄榄陨铁，说明它的矿物和同位素特征不能简单归入主群，是中国陨石研究的重要新点。",
+      "image": {
+        "status": "not-yet-curated",
+        "searchTerms": [
+          "Gyarub Zangbo pallasite meteorite"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Meteoritical Bulletin Database: Gyarub Zangbo",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.php?code=73792"
+        },
+        {
+          "title": "LPSC 2023: Gyarub Zangbo anomalous carbonaceous pallasite",
+          "url": "https://www.hou.usra.edu/meetings/lpsc2023/pdf/1183.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+name: 数据贡献
+description: 新增、纠正或补充一条可复核的陨石记录
+title: "[Data]: "
+labels: [data]
+body:
+  - type: input
+    id: meteorite
+    attributes:
+      label: 正式名称
+      placeholder: 例如 Aletai
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: 建议修改
+      description: 说明当前内容、建议内容和修改原因。
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 来源
+      description: 提供 MBDB、论文、博物馆或机构的可复核链接。
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我区分了发现地、坠落地、散布区和展藏地。
+          required: true
+        - label: 图片不是商品页、同名人物或未经核验的搜索结果。
+          required: true

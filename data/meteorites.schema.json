@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.org/meteorite-atlas/meteorites.schema.json",
+  "title": "Meteorite Atlas curated dataset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "updatedAt",
+    "coordinateOrder",
+    "sourcePolicy",
+    "scopeNoteZh",
+    "contentLicense",
+    "meteorites"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "updatedAt": { "type": "string", "format": "date" },
+    "coordinateOrder": { "const": "[longitude, latitude]" },
+    "sourcePolicy": { "type": "string", "minLength": 20 },
+    "scopeNoteZh": { "type": "string", "minLength": 20 },
+    "contentLicense": { "type": "string", "minLength": 10 },
+    "meteorites": {
+      "type": "array",
+      "minItems": 20,
+      "items": { "$ref": "#/definitions/meteorite" }
+    }
+  },
+  "definitions": {
+    "coordinate": {
+      "type": "array",
+      "items": [
+        { "type": "number", "minimum": -180, "maximum": 180 },
+        { "type": "number", "minimum": -90, "maximum": 90 }
+      ],
+      "additionalItems": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "url"],
+      "properties": {
+        "title": { "type": "string", "minLength": 4 },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "majorAxisKm": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "minorAxisKm": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "radiusKm": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "areaKm2": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "confidence", "descriptionZh"],
+      "properties": {
+        "kind": { "enum": ["point", "circle", "ellipse", "polygon", "line", "multi-point"] },
+        "confidence": { "enum": ["official-coordinate", "reported-extent", "verified-boundary", "editorial-approximation", "pending-digitization"] },
+        "points": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/coordinate" },
+          "minItems": 2
+        },
+        "dimensions": { "$ref": "#/definitions/dimensions" },
+        "dimensionStatus": { "enum": ["reported", "estimated", "unknown"] },
+        "boundaryConfidence": { "enum": ["low", "medium", "high"] },
+        "descriptionZh": { "type": "string", "minLength": 8 }
+      }
+    },
+    "meteorite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "aliases", "category", "categoryZh", "classification", "event", "location", "map", "summaryZh", "image", "sources"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "name": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["zh", "en"],
+          "properties": {
+            "zh": { "type": "string", "minLength": 1 },
+            "en": { "type": "string", "minLength": 1 }
+          }
+        },
+        "aliases": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "category": { "enum": ["iron", "pallasite"] },
+        "categoryZh": { "type": "string", "minLength": 3 },
+        "classification": { "type": "string", "minLength": 3 },
+        "event": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "year", "labelZh"],
+          "properties": {
+            "kind": { "enum": ["find", "observed_fall"] },
+            "year": { "type": ["integer", "null"], "minimum": 1000, "maximum": 2100 },
+            "labelZh": { "type": "string", "minLength": 4 }
+          }
+        },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["countryZh", "regionZh", "coordinates", "coordinateRole"],
+          "properties": {
+            "countryZh": { "type": "string", "minLength": 1 },
+            "regionZh": { "type": "string", "minLength": 2 },
+            "coordinates": { "$ref": "#/definitions/coordinate" },
+            "coordinateRole": { "type": "string", "minLength": 4 }
+          }
+        },
+        "map": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["coverage"],
+          "properties": { "coverage": { "$ref": "#/definitions/coverage" } }
+        },
+        "summaryZh": { "type": "string", "minLength": 40 },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "searchTerms"],
+          "properties": {
+            "status": { "enum": ["curated", "not-yet-curated"] },
+            "searchTerms": { "type": "array", "items": { "type": "string", "minLength": 2 }, "minItems": 1 }
+          }
+        },
+        "sources": { "type": "array", "items": { "$ref": "#/definitions/source" }, "minItems": 1 }
+      }
+    }
+  }
+}

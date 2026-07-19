@@ -1,0 +1,27 @@
+name: 问题报告
+description: 报告页面、地图、无障碍或构建问题
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题描述
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: 列出页面、操作、预期结果和实际结果。
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 浏览器与设备
+      placeholder: Chrome 126 / Windows 11 / 390x844
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 截图或控制台信息
