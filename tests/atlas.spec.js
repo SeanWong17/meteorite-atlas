@@ -30,7 +30,11 @@ test("uses one panel at a time on a phone", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
 
-  await expect(page.locator("canvas")).toBeVisible();
+  const mobileGlobe = page.locator(
+    ".globe-canvas[data-ready='true'][data-texture-ready='true']",
+  );
+  await expect(mobileGlobe).toBeVisible();
+  expect(Number(await mobileGlobe.getAttribute("data-pixel-sample"))).toBeGreaterThan(50);
   await expect(page.locator(".catalog-panel")).not.toBeVisible();
   await expect(page.locator(".detail-panel")).not.toBeVisible();
 
